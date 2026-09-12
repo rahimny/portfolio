@@ -1,0 +1,84 @@
+/* Tweakpane theming — maps the experiment control panels onto our tokens.
+   Kept out of index.css so design tokens live alone. */
+
+.tp-dfwv {
+  top: calc(var(--navbar-height) + 1rem) !important;
+  right: 1rem !important;
+  backdrop-filter: blur(8px) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-lg) !important;
+}
+
+:root {
+  --tp-base-background-color: color-mix(
+    in oklab,
+    var(--surface) 80%,
+    transparent
+  );
+  --tp-base-shadow-color: color-mix(in oklab, var(--fg) 10%, transparent);
+
+  --tp-button-background-color: var(--surface-2);
+  --tp-button-background-color-active: var(--brand);
+  --tp-button-background-color-focus: color-mix(
+    in oklab,
+    var(--surface-2) 85%,
+    var(--brand) 15%
+  );
+  --tp-button-background-color-hover: color-mix(
+    in oklab,
+    var(--surface-2) 75%,
+    var(--brand) 25%
+  );
+  --tp-button-foreground-color: var(--fg);
+
+  --tp-container-background-color: color-mix(
+    in oklab,
+    var(--surface-2) 40%,
+    transparent
+  );
+  --tp-container-background-color-active: color-mix(
+    in oklab,
+    var(--brand) 25%,
+    transparent
+  );
+  --tp-container-background-color-focus: color-mix(
+    in oklab,
+    var(--surface-2) 55%,
+    transparent
+  );
+  --tp-container-background-color-hover: color-mix(
+    in oklab,
+    var(--surface-2) 50%,
+    transparent
+  );
+  --tp-container-foreground-color: var(--fg-muted);
+
+  --tp-groove-foreground-color: var(--border);
+
+  --tp-input-background-color: var(--surface-2);
+  --tp-input-background-color-active: color-mix(
+    in oklab,
+    var(--surface-2) 75%,
+    var(--brand) 25%
+  );
+  --tp-input-background-color-focus: color-mix(
+    in oklab,
+    var(--surface-2) 85%,
+    var(--brand) 15%
+  );
+  --tp-input-background-color-hover: color-mix(
+    in oklab,
+    var(--surface-2) 80%,
+    var(--fg) 5%
+  );
+  --tp-input-foreground-color: var(--fg);
+
+  --tp-label-foreground-color: var(--fg-muted);
+
+  --tp-monitor-background-color: color-mix(
+    in oklab,
+    var(--surface-2) 50%,
+    transparent
+  );
+  --tp-monitor-foreground-color: var(--fg-muted);
+}

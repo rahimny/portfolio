@@ -1,0 +1,790 @@
+.atelier-page {
+  padding: calc(var(--navbar-height) + 1.25rem) var(--gutter) 1.5rem;
+}
+.atelier-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.atelier-heading nav {
+  width: auto;
+}
+.atelier-heading > span {
+  white-space: nowrap;
+  color: var(--fg-muted);
+}
+.atelier {
+  background: var(--surface);
+  color: var(--fg);
+}
+.atelier-topbar {
+  min-height: 66px;
+  padding: 1rem 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+.atelier-topbar > div {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+}
+.atelier-wordmark {
+  font-size: 1.05rem;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+.atelier-divider {
+  color: var(--fg-muted);
+}
+.atelier-descriptor {
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+}
+.atelier-system {
+  font-size: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.atelier-system i {
+  width: 5px;
+  height: 5px;
+  background: var(--fg);
+  border-radius: 50%;
+}
+.atelier-stage {
+  position: relative;
+  height: clamp(500px, calc(100dvh - 310px), 1000px);
+  overflow: hidden;
+}
+.atelier-stage canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+}
+.atelier-stage canvas:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: -3px;
+}
+.atelier-title {
+  position: absolute;
+  left: 2rem;
+  top: 2rem;
+  pointer-events: none;
+}
+.atelier-title .font-meta {
+  font-size: 0.55rem;
+  color: var(--fg);
+}
+.atelier-title h1 {
+  font-size: clamp(2rem, 3.2vw, 3.6rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin: 1rem 0;
+}
+.atelier-title > p:last-child {
+  color: var(--fg);
+  font-size: 0.72rem;
+  line-height: 1.6;
+}
+.atelier-views {
+  position: absolute;
+  right: 1.75rem;
+  top: 1.7rem;
+  display: flex;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+.atelier button,
+.atelier-upload {
+  cursor: pointer;
+  transition:
+    background 150ms,
+    color 150ms;
+}
+.atelier button:focus-visible,
+.atelier select:focus-visible,
+.atelier-upload:focus-within {
+  outline: 2px solid var(--fg);
+  outline-offset: 4px;
+}
+.atelier button:disabled,
+.atelier select:disabled,
+.atelier-disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.atelier-views button {
+  padding: 0.6rem 0.85rem;
+  font-size: 0.67rem;
+  text-transform: capitalize;
+  color: var(--fg-muted);
+}
+.atelier-views button[aria-pressed='true'] {
+  background: var(--fg);
+  color: var(--surface);
+}
+.atelier-caption {
+  position: absolute;
+  left: 2rem;
+  bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  pointer-events: none;
+}
+.atelier-caption .font-meta {
+  font-size: 0.65rem;
+}
+.atelier-caption > span:last-child {
+  font-size: 0.65rem;
+  color: var(--fg);
+}
+.atelier-coordinates {
+  position: absolute;
+  right: 1.75rem;
+  bottom: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  font-size: 0.6rem;
+  color: var(--fg-muted);
+  pointer-events: none;
+}
+.atelier-console {
+  display: grid;
+  grid-template-columns: 1.05fr 1.6fr 0.9fr;
+  padding: 1.4rem 1.75rem;
+  gap: 2rem;
+  border-top: 1px solid var(--border);
+}
+.atelier-console .font-meta {
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+}
+.atelier-selection,
+.atelier-transport,
+.atelier-speed > div {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-top: 0.65rem;
+}
+.atelier select {
+  appearance: auto;
+  background: var(--surface);
+  color: var(--fg);
+  border: 0;
+  min-width: 0;
+  font-size: 0.78rem;
+  padding: 0.4rem 0;
+  cursor: pointer;
+}
+.atelier-selection select {
+  flex: 1;
+  width: 110px;
+}
+.atelier-console button,
+.atelier-upload {
+  min-width: 32px;
+  min-height: 32px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.atelier-console button:hover:not(:disabled),
+.atelier-upload:hover {
+  background: var(--border);
+}
+.atelier-upload {
+  gap: 0.4rem;
+  font-size: 0.65rem;
+  position: relative;
+}
+.atelier-upload input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+.atelier-process-label {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.atelier-transport input {
+  width: 100%;
+  min-width: 20px;
+  accent-color: var(--fg);
+  height: 20px;
+  cursor: pointer;
+}
+.atelier-transport output {
+  font-variant-numeric: tabular-nums;
+  font-size: 0.7rem;
+  min-width: 3ch;
+}
+.atelier-console .atelier-play {
+  background: var(--fg);
+  color: var(--surface);
+}
+.atelier-console .atelier-play:hover:not(:disabled) {
+  background: var(--fg-muted);
+}
+.atelier-speed > div {
+  justify-content: space-between;
+}
+.atelier-bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.85rem 1.75rem;
+  border-top: 1px solid var(--border);
+  color: var(--fg-muted);
+  font-size: 0.65rem;
+}
+.atelier-bottom .font-meta {
+  font-size: 0.53rem;
+}
+.atelier-notes {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-top: 1.3rem;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.atelier-notes > p > span {
+  color: var(--fg-muted);
+}
+.atelier-notes details {
+  max-width: 540px;
+  font-size: 0.75rem;
+}
+.atelier-notes summary {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  justify-content: flex-end;
+}
+.atelier-notes details p {
+  margin-top: 1rem;
+}
+.atelier-message {
+  font-size: 0.75rem;
+  margin-top: 1rem;
+}
+@media (max-width: 1100px) {
+  .atelier-descriptor,
+  .atelier-divider {
+    display: none;
+  }
+  .atelier-console {
+    gap: 1.2rem;
+    grid-template-columns: 1fr 1.3fr;
+  }
+  .atelier-speed {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .atelier-speed > div {
+    margin-top: 0;
+    gap: 1.5rem;
+  }
+  .atelier-title h1 {
+    font-size: 2.4rem;
+  }
+}
+@media (max-width: 640px) {
+  .atelier-page {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  .atelier-heading > span {
+    display: none;
+  }
+  .atelier-topbar {
+    padding: 1rem;
+    min-height: 58px;
+  }
+  .atelier-wordmark {
+    font-size: 0.87rem;
+  }
+  .atelier-system {
+    font-size: 0.46rem;
+    letter-spacing: 0.03em;
+    max-width: 110px;
+  }
+  .atelier-stage {
+    height: 530px;
+  }
+  .atelier-title {
+    top: 1.2rem;
+    left: 1rem;
+  }
+  .atelier-title h1 {
+    font-size: 2.25rem;
+  }
+  .atelier-title > p:last-child {
+    display: none;
+  }
+  .atelier-title .font-meta {
+    font-size: 0.45rem;
+  }
+  .atelier-views {
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+  }
+  .atelier-views button {
+    padding: 0.55rem 0.65rem;
+    font-size: 0.6rem;
+  }
+  .atelier-caption {
+    left: 1rem;
+    bottom: 4rem;
+  }
+  .atelier-caption > span:last-child {
+    font-size: 0.6rem;
+  }
+  .atelier-coordinates {
+    display: none;
+  }
+  .atelier-console {
+    grid-template-columns: 1fr;
+    padding: 1.2rem 1rem;
+    gap: 1.25rem;
+  }
+  .atelier-speed {
+    grid-column: auto;
+  }
+  .atelier-selection select {
+    width: auto;
+  }
+  .atelier-bottom {
+    padding: 0.8rem 1rem;
+  }
+  .atelier-bottom > span:last-child {
+    display: none;
+  }
+  .atelier-notes {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .atelier-notes summary {
+    justify-content: flex-start;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .atelier button,
+  .atelier-upload {
+    transition: none;
+  }
+}
+
+.atelier-stage {
+  color: var(--ink);
+}
+.atelier-title .font-meta {
+  font-size: 0.65rem;
+  letter-spacing: 0.09em;
+}
+.atelier-title h1 {
+  font-weight: 600;
+}
+.atelier-stage .atelier-caption > span:last-child {
+  color: var(--ink);
+}
+.atelier-coordinates {
+  color: var(--ink);
+}
+.atelier-bottom .atelier-finish {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.3rem 0;
+  font-size: 0.7rem;
+  color: var(--fg);
+}
+.atelier-stages {
+  display: flex;
+  gap: 1.4rem;
+}
+.atelier-stages [aria-current='step'] {
+  color: var(--fg);
+}
+.atelier-japanese {
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+}
+@media (max-width: 640px) {
+  .atelier-stages {
+    display: none;
+  }
+  .atelier-title .font-meta {
+    font-size: 0.55rem;
+  }
+}
+
+.atelier-stage {
+  height: clamp(520px, calc(100dvh - 285px), 1000px);
+}
+.atelier-title {
+  top: 1.5rem;
+  left: 1.75rem;
+}
+.atelier-title h1 {
+  font-size: clamp(1.8rem, 2.6vw, 2.8rem);
+}
+.atelier-title > p:last-child {
+  font-size: 0.68rem;
+}
+.atelier-recipe {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem 1.75rem;
+  border-top: 1px solid var(--border);
+}
+.atelier-recipe > label {
+  font-size: 0.6rem;
+  color: var(--fg-muted);
+}
+.atelier-recipe select {
+  font-size: 0.72rem;
+}
+.atelier-recipe-note {
+  flex: 1;
+  font-size: 0.68rem;
+  color: var(--fg-muted);
+}
+.atelier-recipe button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  min-height: 36px;
+}
+.atelier-bottom {
+  gap: 1rem;
+  align-items: center;
+}
+.atelier-stages {
+  flex-wrap: wrap;
+  gap: 0.5rem 1.3rem;
+}
+.atelier-stages button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 32px;
+  text-align: left;
+}
+.atelier-stages button span {
+  opacity: 0.65;
+}
+.atelier-stages [aria-current='step'] {
+  box-shadow: inset 0 -2px var(--fg);
+}
+@media (max-width: 900px) {
+  .atelier-recipe-note {
+    display: none;
+  }
+  .atelier-recipe button {
+    margin-left: auto;
+  }
+  .atelier-stages {
+    gap: 0.6rem;
+  }
+}
+@media (max-width: 640px) {
+  .atelier-stage {
+    height: 540px;
+  }
+  .atelier-title {
+    left: 1rem;
+    top: 1rem;
+  }
+  .atelier-title h1 {
+    font-size: 1.9rem;
+  }
+  .atelier-views {
+    left: 1rem;
+    right: auto;
+    bottom: 1rem;
+  }
+  .atelier-views button {
+    min-height: 40px;
+    padding: 0.6rem 0.7rem;
+  }
+  .atelier-recipe {
+    padding: 0.8rem 1rem;
+    gap: 0.5rem;
+  }
+  .atelier-recipe label {
+    width: 100%;
+  }
+  .atelier-recipe select {
+    max-width: 100%;
+    flex: 1;
+  }
+  .atelier-recipe button {
+    margin-left: 0;
+  }
+  .atelier-stages {
+    display: flex;
+    flex: 1;
+  }
+  .atelier-stages button {
+    min-height: 44px;
+    font-size: 0.55rem;
+  }
+  .atelier-bottom {
+    align-items: flex-start;
+  }
+  .atelier-bottom .atelier-finish {
+    display: none;
+  }
+}
+
+.atelier-stage[data-close='true'] .atelier-title h1 {
+  font-size: 1.1rem;
+  margin-top: 0.4rem;
+}
+.atelier-stage[data-close='true'] .atelier-title h1 br {
+  display: none;
+}
+.atelier-stage[data-close='true'] .atelier-title > p:last-child {
+  display: none;
+}
+.atelier-stage .atelier-title,
+.atelier-stage .atelier-caption {
+  color: var(--fg);
+}
+.atelier-stage .atelier-caption {
+  padding: 0.55rem 0.7rem;
+  background: var(--surface);
+}
+.atelier-views {
+  flex-wrap: wrap;
+}
+@media (max-width: 640px) {
+  .atelier-views {
+    right: 1rem;
+  }
+  .atelier-views button {
+    padding-inline: 0.6rem;
+  }
+  .atelier-recipe label {
+    width: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .atelier-recipe {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    column-gap: 1rem;
+  }
+  .atelier-recipe select {
+    width: 100%;
+    min-width: 0;
+    min-height: 40px;
+  }
+  .atelier-recipe button {
+    grid-column: 1 / -1;
+    justify-self: end;
+  }
+}
+
+.atelier-mode {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.atelier-worlds {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.atelier-worlds > div {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.atelier-worlds button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  min-height: 36px;
+  padding: 0.45rem 0.65rem;
+  font-size: 0.65rem;
+  color: var(--fg-muted);
+}
+.atelier-worlds button[aria-pressed='true'] {
+  color: var(--fg);
+  background: var(--bg);
+}
+.atelier-worlds i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--fg-muted);
+}
+.atelier-worlds i[data-tone='bioelectric'] {
+  background: transparent;
+  border: 1px solid var(--fg-muted);
+}
+.atelier-worlds i[data-tone='signal'] {
+  border-radius: 0;
+  transform: rotate(45deg);
+}
+.atelier-genome {
+  border-top: 1px solid var(--border);
+  padding: 0 1.75rem;
+}
+.atelier-genome summary {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 0.72rem;
+}
+.atelier-genome summary .font-meta {
+  font-size: 0.5rem;
+  color: var(--fg-muted);
+}
+.atelier-genome-controls {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  padding-block: 0.9rem;
+}
+.atelier-genome-controls label > span {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.74rem;
+}
+.atelier-genome-controls output {
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-muted);
+}
+.atelier-genome-controls input {
+  width: 100%;
+  accent-color: var(--fg);
+  margin-block: 0.75rem;
+}
+.atelier-genome-controls small,
+.atelier-genome > p {
+  font-size: 0.66rem;
+  color: var(--fg-muted);
+}
+.atelier-genome > p {
+  padding-bottom: 1rem;
+}
+.atelier-page[data-world='bioelectric'] .atelier-stage .atelier-title,
+.atelier-page[data-world='bioelectric'] .atelier-stage .atelier-title p {
+  color: var(--on-ink);
+}
+.atelier-page[data-immersive='true'] {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  padding: 0;
+  background: var(--surface);
+}
+.atelier-page[data-immersive='true'] .atelier-heading,
+.atelier-page[data-immersive='true'] .atelier-mode,
+.atelier-page[data-immersive='true'] .atelier-topbar,
+.atelier-page[data-immersive='true'] .atelier-console,
+.atelier-page[data-immersive='true'] .atelier-recipe,
+.atelier-page[data-immersive='true'] .atelier-bottom,
+.atelier-page[data-immersive='true'] .atelier-genome,
+.atelier-page[data-immersive='true'] .atelier-notes,
+.atelier-page[data-immersive='true'] .atelier-message {
+  display: none;
+}
+.atelier-page[data-immersive='true'] .atelier-stage {
+  height: auto;
+  min-height: 0;
+  flex: 1;
+}
+.atelier-page[data-immersive='true'] .atelier {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+.atelier-page[data-immersive='true'] .atelier-worlds {
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .atelier-worlds {
+    padding: 0.45rem 0.6rem;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+  .atelier-worlds button {
+    min-height: 40px;
+    padding-inline: 0.5rem;
+    font-size: 0.6rem;
+  }
+  .atelier-world-actions {
+    margin-left: auto;
+  }
+  .atelier-genome {
+    padding-inline: 1rem;
+  }
+  .atelier-genome-controls {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 1.5rem;
+  }
+  .atelier-genome summary .font-meta {
+    display: none;
+  }
+}
+.atelier-mode button {
+  font-size: 0.72rem;
+  padding: 0.6rem 0.9rem;
+  min-height: 40px;
+}
+.atelier-mode button[aria-pressed='true'] {
+  background: var(--fg);
+  color: var(--surface);
+}
+.atelier-mode span {
+  margin-left: auto;
+  font-size: 0.57rem;
+  color: var(--fg-muted);
+}
+.atelier-transport input:disabled {
+  opacity: 0.55;
+  cursor: default;
+}
+@media (max-width: 640px) {
+  .atelier-mode {
+    padding: 0.5rem 1rem;
+    flex-wrap: wrap;
+  }
+  .atelier-mode span {
+    width: 100%;
+    margin: 0.4rem 0;
+  }
+}

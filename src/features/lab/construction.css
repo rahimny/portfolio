@@ -1,0 +1,28 @@
+.construction-plate {
+  margin: 1rem 0;
+  max-width: 36rem;
+  color: var(--ink);
+  background: var(--paper);
+}
+.construction-plate img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.construction-plate figcaption {
+  padding: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  text-transform: none;
+  letter-spacing: normal;
+}
+.construction-plate figcaption strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+}
+.construction-plate figcaption span {
+  color: var(--fg-muted);
+}

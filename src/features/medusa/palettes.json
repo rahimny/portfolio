@@ -1,0 +1,29 @@
+[
+  {
+    "name": "Ochre",
+    "ground": "#526e7c",
+    "light": "#b7bcb1",
+    "dark": "#563a46",
+    "mid": "#be7548",
+    "pale": "#f4d394",
+    "edge": "#eee9cf"
+  },
+  {
+    "name": "Rose",
+    "ground": "#345e70",
+    "light": "#a1b9aa",
+    "dark": "#633257",
+    "mid": "#e65786",
+    "pale": "#ffb6c3",
+    "edge": "#ffe7d6"
+  },
+  {
+    "name": "Ultramarine",
+    "ground": "#b7b09f",
+    "light": "#ded6bb",
+    "dark": "#263c65",
+    "mid": "#4c79a9",
+    "pale": "#b5c7c3",
+    "edge": "#f5e7c5"
+  }
+]

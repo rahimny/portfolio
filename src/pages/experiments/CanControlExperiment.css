@@ -1,0 +1,392 @@
+.can-control {
+  min-height: 100dvh;
+  padding: calc(var(--navbar-height) + 1.5rem) clamp(1rem, 3vw, 3rem) 2rem;
+}
+.can-control-heading {
+  margin-bottom: 1.5rem;
+}
+.can-control-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin-top: 1rem;
+}
+.can-control-title h1 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+.can-control-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  max-width: 1440px;
+  margin-inline: auto;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: start;
+}
+.can-control-work {
+  position: sticky;
+  top: calc(var(--navbar-height) + 1rem);
+  min-width: 0;
+  scroll-margin-top: calc(var(--navbar-height) + 1rem);
+}
+.can-control-wall {
+  position: relative;
+  height: clamp(340px, calc(100dvh - 23rem), 680px);
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  overflow: hidden;
+}
+.can-control-wall canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.can-control-editor {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+  color: var(--ink);
+  cursor: crosshair;
+}
+.can-control-caption {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.875rem;
+}
+.can-control-intro {
+  max-width: 40rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.can-control-controls {
+  font-size: 0.875rem;
+}
+.can-control-controls fieldset {
+  min-width: 0;
+}
+.can-control-controls legend {
+  margin-bottom: 0.75rem;
+}
+.can-control-controls button {
+  min-height: 44px;
+  padding: 0.625rem 0.75rem;
+  text-align: left;
+  border: 1px solid var(--border-strong);
+  line-height: 1.25;
+}
+.can-control-controls button:hover:not(:disabled) {
+  border-color: var(--ink);
+}
+.can-control-controls button:disabled {
+  color: var(--fg-muted);
+  cursor: not-allowed;
+}
+.can-control-controls button[aria-pressed='true'] {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--on-ink);
+}
+.can-control-controls .can-control-primary {
+  background: var(--ink);
+  color: var(--on-ink);
+  border-color: var(--ink);
+}
+.can-control-controls button:focus-visible,
+.can-control-controls input:focus-visible,
+.can-control-controls select:focus-visible,
+.can-control-controls summary:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+.can-control-presets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+.can-control-presets button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+.can-control-presets svg {
+  width: 40px;
+  height: 32px;
+  flex-shrink: 0;
+}
+.can-control-range {
+  display: block;
+  margin-top: 1.5rem;
+}
+.can-control-range span,
+.can-control-cap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.can-control-range output {
+  font-variant-numeric: tabular-nums;
+}
+.can-control-range input {
+  display: block;
+  width: 100%;
+  height: 44px;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+.can-control-cap {
+  margin-top: 0.5rem;
+}
+.can-control-cap select {
+  background: var(--bg);
+  color: var(--fg);
+  border: 1px solid var(--border-strong);
+  padding: 0.625rem;
+  min-height: 44px;
+}
+.can-control-hint {
+  margin: 1rem 0;
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+.can-control-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.3rem;
+}
+.can-control-buttons .can-control-primary,
+.can-control-buttons button:last-child {
+  grid-column: 1 / -1;
+}
+.can-control-editor-controls p {
+  margin: 1rem 0;
+  line-height: 1.6;
+}
+.can-control-message {
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+.can-control-notes {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  padding-top: 0.75rem;
+}
+.can-control-notes summary {
+  min-height: 44px;
+  padding-top: 0.5rem;
+  cursor: pointer;
+}
+.can-control-notes p {
+  margin-top: 0.75rem;
+  line-height: 1.6;
+  color: var(--fg-muted);
+}
+@media (min-width: 1400px) {
+  .can-control-layout {
+    max-width: 1400px;
+    margin-inline: auto;
+  }
+}
+@media (max-width: 760px) {
+  .can-control {
+    padding-top: calc(var(--navbar-height) + 1rem);
+  }
+  .can-control-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+  .can-control-heading {
+    margin-bottom: 1rem;
+  }
+  .can-control-title {
+    gap: 0.5rem;
+  }
+  .can-control-title > span {
+    flex-basis: 100%;
+  }
+  .can-control-presets {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .can-control-controls {
+    max-width: 32rem;
+    width: 100%;
+    margin-inline: auto;
+  }
+}
+
+.can-control-playback {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+.can-control-playback button {
+  text-align: center;
+  flex: 1 0 auto;
+}
+
+.can-control-wall canvas {
+  touch-action: none;
+}
+.can-control-wall canvas:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: -4px;
+}
+.can-control-camera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+.can-control-camera fieldset {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.can-control-camera legend {
+  float: left;
+  margin: 0 0.8rem 0 0;
+  padding-block: 0.85rem;
+}
+.can-control-camera-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.can-control-camera span {
+  font-size: 0.75rem;
+}
+.can-control-studio > fieldset {
+  display: block;
+}
+.can-control-studio .can-control-technique {
+  margin-top: 1.5rem;
+}
+.can-control-studio .can-control-range {
+  margin-top: 0.75rem;
+}
+.can-control-studio .can-control-notes {
+  margin-top: 1.25rem;
+}
+.can-control-transport fieldset,
+.can-control-transport-actions,
+.can-control-technique-presets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.3rem;
+}
+.can-control-transport fieldset {
+  justify-content: space-between;
+  padding-bottom: 0.75rem;
+  gap: 0.75rem;
+}
+.can-control-rate {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+}
+.can-control-mobile-path {
+  display: none;
+}
+.can-control-rate select {
+  min-height: 44px;
+  padding: 0.5rem;
+  border: 1px solid var(--border-strong);
+  background: var(--bg);
+  color: var(--fg);
+}
+.can-control-instant {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.can-control-instant input {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--ink);
+}
+.can-control-technique-presets button {
+  flex: 1;
+  text-align: center;
+}
+.can-control-apply {
+  display: flex;
+  gap: 0.3rem;
+  position: sticky;
+  bottom: 0;
+  padding-block: 0.75rem;
+  background: var(--bg);
+}
+.can-control-apply button {
+  flex: 1;
+  text-align: center;
+}
+@media (max-width: 1000px) {
+  .can-control-apply {
+    position: static;
+  }
+  .can-control-mobile-path {
+    display: flex;
+    flex: 1;
+  }
+  .can-control-mobile-path select {
+    min-width: 0;
+    width: 100%;
+  }
+  .can-control-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .can-control-work {
+    position: static;
+  }
+  .can-control-studio {
+    max-width: 36rem;
+    width: 100%;
+    margin-inline: auto;
+  }
+}
+@media (max-width: 760px) {
+  .can-control-wall {
+    height: 53dvh;
+    min-height: 340px;
+  }
+  .can-control-studio > fieldset {
+    display: block;
+  }
+  .can-control-studio .can-control-range {
+    margin-top: 1.25rem;
+  }
+  .can-control-camera {
+    align-items: start;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .can-control-camera fieldset {
+    display: block;
+  }
+  .can-control-camera legend {
+    float: none;
+    padding: 0;
+    margin-bottom: 0.5rem;
+  }
+  .can-control-camera-buttons button {
+    flex: 1 0 auto;
+  }
+}

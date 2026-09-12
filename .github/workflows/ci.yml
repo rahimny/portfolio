@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches: [trunk]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Publication boundary
+        run: pnpm check:publication
+
+      - name: Publication history
+        env:
+          BASE_REVISION: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD_REVISION: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: |
+          if [ -z "$BASE_REVISION" ] || [ "$BASE_REVISION" = "0000000000000000000000000000000000000000" ] || ! git cat-file -e "$BASE_REVISION^{commit}" 2>/dev/null; then
+            pnpm check:publication --history "$HEAD_REVISION"
+          else
+            pnpm check:publication --history "$BASE_REVISION..$HEAD_REVISION"
+          fi
+
+      - name: Format
+        run: pnpm format:check
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Unit tests
+        run: pnpm test
+
+      # Fails if a raw Tailwind palette colour or hex literal creeps back in.
+      - name: Token guard
+        run: pnpm check:tokens
+
+      - name: Build
+        run: pnpm build
+
+  contrast:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm exec playwright install --with-deps chromium
+
+      # Boots an isolated Vite server and asserts every token pair clears WCAG
+      # AA. Colour regressions are otherwise invisible in review.
+      - name: Contrast audit
+        run: pnpm check:contrast
+
+      - name: Route smoke test
+        run: pnpm check:routes

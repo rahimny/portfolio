@@ -1,0 +1,171 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@import './styles/fonts.css';
+@import './styles/tokens.css';
+@import './styles/tweakpane.css';
+
+/* The site has one ground and no theme toggle. This variant is kept only
+   so the generated shadcn primitives, which ship `dark:` pairs, still compile —
+   nothing ever carries the class. */
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Anchor targets clear the fixed navbar */
+    scroll-padding-top: calc(var(--navbar-height) + 1rem);
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-text);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Display face. Archivo is a grotesk drawn on a squared skeleton, so it wants
+     weight and negative tracking at size — set loose it reads as a UI font.
+     Optical adjustment is by size band, not by hand at each call site. */
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 0.92;
+  }
+
+  /* Masthead scale. Tracking has to come further in as the size goes up —
+     the same -0.02em that looks tight at 3rem looks loose at 15rem. */
+  .font-hero {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.82;
+    text-transform: uppercase;
+    /* --text-hero is fluid against the viewport, not against any one string —
+       at the narrow end a single word (YAKOOB, at the masthead's own tracking)
+       can be wider than the column it wraps into, and a word can't break at a
+       space it doesn't have. Without this the overflow is invisible (the real
+       heading sits behind the particle canvas, painted only on the hidden
+       fallback) but it still sets the page's scrollable width, which is the
+       horizontal scrollbar this was fixing. The auto-fit in particle-text's
+       own layout.ts already shrinks what gets drawn; this is the same
+       guarantee for the plain-text heading underneath it. */
+    overflow-wrap: anywhere;
+  }
+
+  /* Mono metadata. Every technical label on the site is this: uppercase, wide
+     tracking, small. It is the spec-sheet voice. */
+  .font-meta {
+    font-family: var(--font-mono);
+    font-size: var(--text-2xs);
+    line-height: 1.5;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+  }
+
+  /* Quieter than the ground's full-contrast text, but still ≥4.5:1 on it.
+     `opacity-*` on inherited colour looked right everywhere but measured
+     right nowhere — a 50% tint of --fg on --bg is ~3.7:1, not the ratio the
+     un-tinted token was verified at. Components that render on more than one
+     ground (PlateHeader, IndexRow, SpecRow) can't hardcode a single muted
+     colour, so this keys off the `.on-ink`/`.on-brand` ancestor class Plate
+     already sets instead. */
+  .text-dim {
+    color: var(--fg-subtle);
+  }
+  .on-ink .text-dim {
+    color: var(--on-ink-muted);
+  }
+  .on-brand .text-dim {
+    color: var(--on-brand-muted);
+  }
+
+  ::selection {
+    background-color: var(--brand);
+    color: var(--on-brand);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  /* On an orange or ink ground the ink ring disappears. Flip it. */
+  .on-brand :focus-visible,
+  .on-ink :focus-visible {
+    outline-color: currentColor;
+  }
+
+  * {
+    scrollbar-color: var(--border-strong) transparent;
+  }
+}
+
+@layer components {
+  /* The field. One 12-column grid, one gap token, used by every section on the
+     page so nothing invents its own horizontal rhythm. */
+  .field {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: var(--gap);
+  }
+
+  /* The named placements.
+     ------------------------------------------------------------------
+     Three, and they are the whole vocabulary. Before this every page
+     invented its own `md:col-span-6 md:col-start-8`, which is how the
+     masthead ended up with a six-column paragraph beside a five-column
+     table and no empty columns anywhere.
+
+     White space on this site is made by leaving columns EMPTY:
+
+        1   2   3   4   5   6   7   8   9  10  11  12
+       [------- lead -------]           [--- aside ---]
+                             ^^^^^^^^^^^ the air
+
+     Everything is full-width below md — a phone has no columns to spare. */
+  .col-lead,
+  .col-aside,
+  .col-inset {
+    grid-column: 1 / -1;
+  }
+
+  @media (width >= 48rem) {
+    /* Body copy, headings, anything read left to right. */
+    .col-lead {
+      grid-column: 1 / span 5;
+    }
+    /* Metadata, records, specs. Hard against the right margin. */
+    .col-aside {
+      grid-column: 9 / span 4;
+    }
+    /* Wide content that should still not touch both margins. */
+    .col-inset {
+      grid-column: 1 / span 9;
+    }
+  }
+}
+
+/* Global, non-negotiable. Anything driven by requestAnimationFrame additionally
+   checks this in JS — CSS alone can't stop a rAF loop. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

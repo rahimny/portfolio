@@ -1,0 +1,393 @@
+/* Paper ground, ruled sections and mono metadata frame the discrete field. */
+
+.ordinal-page {
+  padding: 0 var(--gutter);
+  max-width: 1800px;
+  margin: auto;
+  color: var(--fg);
+}
+
+.ordinal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+}
+.ordinal-header > span {
+  font-size: 11px;
+  color: var(--fg-muted);
+}
+
+.ordinal-masthead {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--gap);
+  align-items: end;
+  padding: 8px 0 22px;
+}
+.ordinal-masthead > div:first-child > .font-meta {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--fg-muted);
+}
+.ordinal-masthead h1 {
+  font-size: clamp(52px, 8vw, 132px);
+  text-transform: uppercase;
+  letter-spacing: -0.06em;
+  line-height: 0.92;
+  margin: 8px 0 0;
+}
+.ordinal-standfirst {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--gap);
+  padding-bottom: 6px;
+}
+.ordinal-standfirst > p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+}
+.ordinal-standfirst > p span {
+  color: var(--fg);
+}
+.ordinal-readout {
+  display: grid;
+  gap: 5px;
+  text-align: right;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+
+/* The field is wide and the argument about the two orderings is narrow, so the
+   evidence sits beside the thing it is about rather than below it. */
+.ordinal-work {
+  display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
+  gap: calc(var(--gap) * 1.6);
+  align-items: start;
+}
+
+.ordinal-stage {
+  position: relative;
+  height: min(74vh, 820px);
+  min-height: 420px;
+  background: var(--bg);
+  border: var(--rule) solid var(--border);
+  overflow: hidden;
+}
+.ordinal-stage canvas {
+  display: block;
+  touch-action: none;
+  cursor: crosshair;
+}
+.ordinal-stage canvas:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -4px;
+}
+.ordinal-unavailable {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  padding: var(--gap);
+  text-align: center;
+  font-size: 13px;
+  color: var(--fg-muted);
+}
+
+.ordinal-caption {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 0 0;
+  font-size: 11px;
+  color: var(--fg-muted);
+}
+.ordinal-key {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.ordinal-key i {
+  display: inline-block;
+  width: 16px;
+  height: 3px;
+  margin-left: 10px;
+}
+.ordinal-key i:first-child {
+  margin-left: 0;
+}
+.ordinal-key .is-ink {
+  background: var(--ink);
+}
+.ordinal-key .is-accent {
+  background: var(--brand);
+}
+
+/* ------------------------------------------------------------- the orderings */
+
+.ordinal-orderings {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+.ordinal-orderings > h2 {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--fg-muted);
+  padding-bottom: 12px;
+  border-bottom: var(--rule) solid var(--ink);
+}
+.ordinal-orderings > p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--fg-muted);
+  max-width: var(--measure);
+}
+
+/* Both rows are the same 95 characters. Set at the same size, on the same
+   ground, so the only difference a reader can see is the order — which is the
+   whole claim. They scroll rather than wrap: a wrapped ordering is not an
+   ordering any more. */
+.ordinal-ordering {
+  display: grid;
+  gap: 6px;
+  border-top: var(--rule) solid var(--border);
+  padding-top: 10px;
+}
+.ordinal-ordering > .font-meta {
+  font-size: 10px;
+  color: var(--fg-subtle);
+}
+.ordinal-ordering code {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: pre;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  color: var(--fg);
+}
+
+.ordinal-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  border-top: var(--rule) solid var(--ink);
+  padding-top: 12px;
+  margin: 0;
+}
+.ordinal-stats dt {
+  font-size: 10px;
+  color: var(--fg-subtle);
+}
+.ordinal-stats dd {
+  margin: 4px 0 0;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(16px, 1.5vw, 22px);
+}
+.ordinal-stats dd code {
+  font-size: inherit;
+  white-space: pre;
+}
+/* The correlation is the number the section exists to print. */
+.ordinal-stats > div:first-child dd {
+  color: var(--brand-ink);
+}
+
+.ordinal-state {
+  border-top: var(--rule) solid var(--border);
+  padding-top: 12px;
+}
+.ordinal-state h3 {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--fg-muted);
+}
+.ordinal-state dl {
+  margin: 10px 0 0;
+  display: grid;
+  gap: 0;
+}
+.ordinal-state dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 7px 0;
+  border-top: var(--rule) solid var(--border);
+  font-size: 13px;
+}
+.ordinal-state dl > div:first-child {
+  border-top: 0;
+}
+.ordinal-state dd {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+.ordinal-state > p {
+  margin-top: 12px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--fg-subtle);
+}
+
+/* ---------------------------------------------------------------- the console */
+
+.ordinal-console {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--gap);
+  border: 0;
+  padding: 32px 0 0;
+  margin: 0;
+}
+.ordinal-console:disabled {
+  opacity: 0.5;
+}
+.ordinal-control-group {
+  display: grid;
+  gap: 8px;
+  align-content: start;
+  border-top: var(--rule) solid var(--ink);
+  padding-top: 12px;
+}
+.ordinal-control-group > .font-meta {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--fg-muted);
+}
+.ordinal-control-group label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  margin-top: 6px;
+}
+.ordinal-control-group output {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-muted);
+}
+.ordinal-control-group input[type='range'] {
+  width: 100%;
+  accent-color: var(--ink);
+}
+.ordinal-hint {
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--fg-subtle);
+}
+.ordinal-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+.ordinal-buttons button,
+.ordinal-buttons input[type='number'] {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 8px 10px;
+  border: var(--rule) solid var(--border-strong);
+  background: var(--surface);
+  color: var(--fg);
+  cursor: pointer;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+.ordinal-buttons input[type='number'] {
+  cursor: text;
+  width: 6rem;
+}
+.ordinal-buttons button:hover:not(:disabled) {
+  background: var(--surface-2);
+}
+.ordinal-buttons button[aria-pressed='true'] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--on-ink);
+}
+
+.ordinal-notes {
+  padding: 40px 0 0;
+  display: grid;
+  gap: 16px;
+  max-width: var(--measure);
+}
+.ordinal-notes > p {
+  font-size: 15px;
+  line-height: 1.6;
+}
+.ordinal-notes > p span {
+  color: var(--fg-muted);
+}
+.ordinal-notes summary {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  width: fit-content;
+  padding: 8px 0;
+  color: var(--fg-muted);
+}
+.ordinal-notes details p {
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--fg-muted);
+  margin-bottom: 10px;
+}
+.ordinal-notes details p.font-meta {
+  font-size: 11px;
+  color: var(--fg-subtle);
+}
+
+.ordinal-message {
+  min-height: 1.5em;
+  padding: 20px 0 48px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--fg-muted);
+}
+
+@media (max-width: 1100px) {
+  .ordinal-work {
+    grid-template-columns: 1fr;
+  }
+  .ordinal-orderings {
+    padding-top: 24px;
+  }
+}
+
+@media (max-width: 720px) {
+  .ordinal-masthead,
+  .ordinal-standfirst {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    align-items: start;
+    text-align: left;
+  }
+  .ordinal-readout {
+    text-align: left;
+  }
+  .ordinal-caption {
+    font-size: 10px;
+  }
+  .ordinal-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

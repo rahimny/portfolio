@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="icon"
+      href="/favicons/thermal-pixels/pixel-heat-r/favicon.ico"
+      sizes="16x16 32x32 48x48"
+    />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="/favicons/thermal-pixels/pixel-heat-r/favicon.svg"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/favicons/thermal-pixels/pixel-heat-r/favicon-180.png"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      One ground, no toggle (D12). Declaring `light` stops the browser painting
+      a dark canvas behind the page and darkening form controls. The theme
+      bootstrap script that used to live here is gone with the toggle.
+    -->
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#ff3600" />
+    <title>Rahim Neal Yakoob · Real-time graphics for the web</title>
+
+    <!-- Latin subsets only; latin-ext loads on demand via unicode-range -->
+    <link
+      rel="preload"
+      href="/fonts/archivo-var-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/inter-var-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/geist-mono-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+.home-isofield {
+  padding-bottom: calc(var(--section-y) * 0.25);
+}
+.home-isofield-stage {
+  position: relative;
+  height: clamp(380px, 48vw, 620px);
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--bg);
+  touch-action: pan-y;
+}
+.home-isofield-canvas,
+.home-isofield-fallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.home-isofield-fallback {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 0.65;
+  opacity: 0.18;
+}
+.home-isofield-canvas {
+  opacity: 0;
+}
+.home-isofield-canvas[data-ready='true'] {
+  opacity: 1;
+}
+.home-encounter-footer {
+  max-width: var(--content-max);
+  margin: -1rem auto 0;
+  padding-inline: var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  position: relative;
+}
+.home-encounter-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.home-wave-button,
+.home-motion-button,
+.home-study-link {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-subtle);
+}
+.home-wave-button:hover,
+.home-motion-button:hover,
+.home-study-link:hover {
+  color: var(--fg);
+}
+.home-wave-button:disabled,
+.home-motion-button:disabled {
+  opacity: 0.5;
+}
+.home-echo-mark {
+  width: 44px;
+  height: 44px;
+  color: var(--ink);
+}
+.home-echo-mark svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+.home-echo-mark circle:last-child {
+  fill: var(--brand);
+  stroke: var(--brand);
+}
+.home-echo-mark:hover circle:first-child {
+  stroke: var(--brand);
+}
+.home-echo-mark svg[data-echo='true'] circle {
+  animation: home-echo 0.85s ease-out;
+  transform-origin: center;
+}
+@keyframes home-echo {
+  from {
+    stroke: var(--brand);
+    transform: scale(0.65);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-echo-mark svg[data-echo='true'] circle {
+    animation: none;
+  }
+}
+@media (max-width: 767px) {
+  .home-encounter-footer {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .home-encounter-actions {
+    gap: 1rem;
+  }
+}

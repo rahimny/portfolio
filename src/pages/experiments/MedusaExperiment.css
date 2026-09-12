@@ -1,0 +1,183 @@
+.medusa-page {
+  max-width: 1680px;
+  margin: auto;
+  padding: calc(var(--navbar-height) + 22px) 36px 42px;
+  color: var(--fg);
+}
+.medusa-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  font-family: var(--font-meta);
+  font-size: 11px;
+}
+.medusa-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding: 24px 0 20px;
+  gap: 24px;
+}
+.medusa-title h1 {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5vw, 74px);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.medusa-title div > p {
+  font-family: var(--font-meta);
+  font-size: 10px;
+  letter-spacing: 0.13em;
+  margin-bottom: 10px;
+}
+.medusa-title > p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--fg-muted);
+}
+.medusa-frame {
+  position: relative;
+  height: min(62vh, 860px);
+  min-height: 430px;
+  background: var(--surface-2);
+  overflow: hidden;
+  border: 8px solid var(--surface);
+  outline: 1px solid var(--border);
+}
+.medusa-frame canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+.medusa-frame canvas:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: -3px;
+}
+.medusa-caption {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  pointer-events: none;
+  font-family: var(--font-meta);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  color: var(--fg);
+}
+.medusa-caption span {
+  background: var(--bg);
+  padding: 5px 8px;
+}
+.medusa-loading {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  color: var(--fg);
+  background: var(--surface-2);
+  font-family: var(--font-meta);
+  font-size: 13px;
+}
+.medusa-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+  margin-bottom: 28px;
+  align-items: start;
+}
+.medusa-studio {
+  max-height: max(430px, 62vh);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  --tp-base-font-family: var(--font-meta);
+  --tp-base-border-radius: 0;
+  --tp-base-background-color: var(--surface);
+  --tp-container-foreground-color: var(--fg);
+  --tp-label-foreground-color: var(--fg);
+  --tp-monitor-foreground-color: var(--fg);
+}
+.medusa-studio > p {
+  font-size: 11px;
+  line-height: 1.6;
+  padding: 12px;
+  color: var(--fg-muted);
+}
+.medusa-studio :is(input, button, select):focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: -2px;
+}
+.medusa-notes {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr auto;
+  gap: 40px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--fg-muted);
+}
+.medusa-notes a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.medusa-notes > span {
+  font-family: var(--font-meta);
+  font-size: 10px;
+  white-space: nowrap;
+}
+@media (max-width: 900px) {
+  .medusa-page {
+    padding: calc(var(--navbar-height) + 16px) 16px 24px;
+  }
+  .medusa-header {
+    font-size: 9px;
+  }
+  .medusa-title {
+    padding: 26px 0 18px;
+  }
+  .medusa-title > p {
+    font-size: 11px;
+  }
+  .medusa-frame {
+    position: sticky;
+    top: calc(var(--navbar-height) + 8px);
+    z-index: 2;
+    height: 42vh;
+    min-height: 280px;
+    border-width: 5px;
+  }
+  .medusa-caption {
+    left: 7px;
+    right: 7px;
+    bottom: 7px;
+    font-size: 8px;
+  }
+  .medusa-caption span:last-child {
+    display: none;
+  }
+  .medusa-workspace {
+    grid-template-columns: 1fr;
+  }
+  .medusa-studio {
+    max-height: none;
+  }
+  .medusa-notes {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.medusa-frame:has([role='alert']) :is(.medusa-loading, .medusa-caption) {
+  display: none;
+}
+
+.medusa-header > span {
+  white-space: nowrap;
+}

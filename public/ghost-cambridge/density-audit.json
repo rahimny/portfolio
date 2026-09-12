@@ -1,0 +1,11 @@
+{
+  "chapelInspectionBounds": [544665, 258377, 544794, 258418],
+  "sourceReturns": 14988,
+  "sampleReturns": 2361,
+  "sourceAbove20m": 6265,
+  "sampleAbove20m": 966,
+  "cropReturns": 6561030,
+  "sampleReturnsTotal": 1000000,
+  "gpsDurationSeconds": 881.4093573689461,
+  "flightLines": [1711, 1811]
+}

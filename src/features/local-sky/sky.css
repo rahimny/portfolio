@@ -1,0 +1,66 @@
+.local-sky {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  color: var(--fg-subtle);
+}
+.local-sky-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  min-height: 44px;
+  cursor: pointer;
+  border-bottom: 1px dotted currentColor;
+}
+.local-sky-trigger > svg {
+  width: 26px;
+  height: 24px;
+}
+.local-sky-trigger:hover {
+  color: var(--ink);
+}
+.local-sky-sheet {
+  position: absolute;
+  display: block;
+  z-index: 30;
+  left: -5rem;
+  transition-property: none;
+  top: calc(100% + 0.5rem);
+  width: min(18rem, calc(100vw - 3rem));
+  padding: 1.25rem;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--border-strong);
+  text-transform: none;
+  letter-spacing: normal;
+  box-shadow: 4px 4px 0 var(--surface-3);
+}
+.local-sky-sheet[hidden] {
+  display: none;
+}
+.local-sky-title {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+.local-sky-sheet > svg {
+  display: block;
+  width: 100%;
+  margin-top: 1rem;
+}
+.local-sky-disc {
+  fill: var(--brand);
+}
+.local-sky-sheet text {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  fill: currentColor;
+}
+.local-sky-note {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--fg-muted);
+  font-size: 0.75rem;
+  line-height: 1.4;
+}

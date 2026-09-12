@@ -1,0 +1,198 @@
+.filament-page {
+  min-height: 100svh;
+  background: var(--filament-ground);
+  color: var(--filament-text);
+  padding: calc(var(--navbar-height) + 24px) 32px 24px;
+}
+.filament-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 24px;
+  color: var(--filament-muted);
+}
+.filament-header a {
+  color: var(--filament-text);
+}
+.filament-work {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 250px;
+  align-items: start;
+  gap: 44px;
+  max-width: 1560px;
+  margin: auto;
+}
+.filament-stage {
+  position: sticky;
+  top: calc(var(--navbar-height) + 16px);
+  width: 100%;
+  aspect-ratio: 1;
+  max-width: calc(100svh - 104px);
+  justify-self: center;
+}
+.filament-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline-offset: 2px;
+}
+.filament-desk h1 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  letter-spacing: -0.045em;
+  margin: 10px 0 18px;
+}
+.filament-desk > .font-meta {
+  font-size: 10px;
+  color: var(--filament-muted);
+}
+.filament-intro {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--filament-muted);
+  margin-bottom: 20px;
+}
+.filament-desk fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.filament-desk label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.filament-desk output {
+  font-family: var(--font-mono);
+  color: var(--filament-muted);
+}
+.filament-desk input[type='range'] {
+  width: 100%;
+  accent-color: var(--filament-text);
+  margin: 8px 0 18px;
+  height: 16px;
+  cursor: pointer;
+}
+.filament-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.filament-desk button {
+  font-size: 12px;
+  cursor: pointer;
+  padding: 12px 0;
+  color: var(--filament-text);
+}
+.filament-desk button:hover {
+  color: white;
+  text-decoration: underline;
+}
+.filament-desk button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.filament-save {
+  border-top: 1px solid var(--filament-rule);
+  border-bottom: 1px solid var(--filament-rule);
+  width: 100%;
+  margin-top: 18px;
+  text-align: left;
+}
+.filament-status {
+  font-size: 10px;
+  line-height: 1.6;
+  margin: 20px 0 28px;
+  min-height: 32px;
+  color: var(--filament-muted);
+}
+.filament-desk details {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--filament-muted);
+}
+.filament-desk summary {
+  cursor: pointer;
+  color: var(--filament-text);
+}
+.filament-desk details p {
+  margin-top: 12px;
+}
+@media (max-width: 800px) {
+  .filament-page {
+    padding: calc(var(--navbar-height) + 18px) 16px 18px;
+  }
+  .filament-header {
+    font-size: 10px;
+    gap: 12px;
+  }
+  .filament-work {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .filament-stage {
+    position: relative;
+    top: auto;
+    max-width: none;
+  }
+  .filament-desk {
+    max-width: 480px;
+    width: 100%;
+    margin: auto;
+  }
+  .filament-desk h1 {
+    font-size: 38px;
+  }
+}
+.filament-modes {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+.filament-modes button {
+  flex: 1;
+  padding: 10px 6px;
+  border: 1px solid var(--filament-rule);
+}
+.filament-modes button[aria-pressed='true'] {
+  background: var(--filament-text);
+  color: var(--filament-ground);
+}
+.filament-motion-description {
+  color: var(--filament-muted);
+  font-size: 12px;
+  line-height: 1.6;
+  min-height: 40px;
+  margin-bottom: 18px;
+}
+.filament-fine-controls {
+  border-top: 1px solid var(--filament-rule);
+  padding: 12px 0;
+}
+.filament-fine-controls summary {
+  margin-bottom: 12px;
+}
+.filament-stage canvas {
+  touch-action: none;
+  cursor: grab;
+}
+
+.filament-header [aria-current='page'] {
+  color: var(--filament-text);
+}
+.filament-header {
+  scroll-margin-top: calc(var(--navbar-height) + 24px);
+}
+.filament-modes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.filament-network {
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--filament-rule);
+}
+
+.filament-stage canvas[data-dragging='true'] {
+  cursor: grabbing;
+}

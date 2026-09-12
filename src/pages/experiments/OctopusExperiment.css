@@ -1,0 +1,103 @@
+.octopus-page .nereid-workbench {
+  height: clamp(580px, calc(100svh - 250px), 850px);
+}
+.octopus-page .nereid-identity h1 {
+  font-size: clamp(52px, 5.5vw, 84px);
+}
+.octopus-section-drawing {
+  width: 150px;
+  margin-top: 23px;
+}
+.octopus-section-drawing svg {
+  width: 140px;
+  fill: none;
+  stroke: var(--fg-muted);
+  stroke-width: 0.65;
+}
+.octopus-section-drawing span {
+  font: 7px var(--font-mono);
+  color: var(--fg-muted);
+}
+.octopus-behaviour {
+  display: grid;
+  grid-template-columns: 1.3fr repeat(3, 1fr) auto;
+  align-items: center;
+  gap: 35px;
+  padding: 24px 0;
+  margin: 0;
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  min-width: 0;
+}
+.octopus-behaviour h2 {
+  font: 500 22px/1.2 var(--font-display);
+  letter-spacing: -0.04em;
+  margin-top: 6px;
+}
+.octopus-behaviour p {
+  font: 11px/1.6 var(--font-text);
+  color: var(--fg-muted);
+  margin-top: 6px;
+}
+.octopus-behaviour label > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font: 11px var(--font-text);
+}
+.octopus-behaviour output {
+  font: 9px var(--font-mono);
+  color: var(--fg-muted);
+}
+.octopus-behaviour input {
+  display: block;
+  width: 100%;
+  height: 28px;
+  margin-top: 8px;
+  accent-color: var(--fg);
+  cursor: ew-resize;
+}
+.octopus-behaviour button {
+  background: transparent;
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 12px;
+  font: 9px var(--font-mono);
+  min-height: 44px;
+  cursor: pointer;
+}
+@media (max-width: 1100px) {
+  .octopus-behaviour {
+    gap: 20px;
+    grid-template-columns: 1.2fr 1fr 1fr;
+  }
+  .octopus-behaviour > div {
+    grid-row: span 2;
+  }
+}
+@media (max-width: 640px) {
+  .octopus-page .nereid-workbench {
+    height: 690px;
+  }
+  .octopus-page .nereid-stage {
+    top: 125px;
+    bottom: 125px;
+  }
+  .octopus-page .nereid-identity h1 {
+    font-size: 57px;
+  }
+  .octopus-section-drawing {
+    display: none;
+  }
+  .octopus-behaviour {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+  .octopus-behaviour > div {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+  .octopus-behaviour h2 {
+    font-size: 23px;
+  }
+}

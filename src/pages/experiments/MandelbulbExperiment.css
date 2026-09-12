@@ -1,0 +1,328 @@
+.mandelbulb-page {
+  padding: calc(var(--navbar-height) + 1.25rem) var(--gutter) 1.5rem;
+  max-width: 1800px;
+  margin: auto;
+  color: var(--fg);
+}
+.mandelbulb-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.mandelbulb-header nav {
+  width: auto;
+}
+.mandelbulb-header > span {
+  font-size: 10px;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+.mandelbulb-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  padding-top: 1.5rem;
+}
+.mandelbulb-intro h1 {
+  font-size: clamp(2.5rem, 5vw, 4.7rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+.mandelbulb-intro p {
+  font-size: 0.8rem;
+  line-height: 1.65;
+}
+.mandelbulb-intro p span {
+  color: var(--fg-muted);
+}
+.mandelbulb-stage {
+  position: relative;
+  height: clamp(440px, calc(100dvh - 335px), 900px);
+  background: var(--paper);
+  color: var(--fg);
+  overflow: hidden;
+}
+.mandelbulb-stage canvas {
+  display: block;
+  touch-action: none;
+  cursor: grab;
+}
+.mandelbulb-stage canvas:active {
+  cursor: grabbing;
+}
+.mandelbulb-stage canvas:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -3px;
+}
+.mandelbulb-readout {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  display: grid;
+  justify-items: end;
+  gap: 7px;
+  font-size: 10px;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+.mandelbulb-readout span:nth-child(2) {
+  color: var(--fg-muted);
+}
+.mandelbulb-readout i {
+  width: 100px;
+  height: 2px;
+  background: var(--border);
+}
+.mandelbulb-readout b {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--brand);
+  transform-origin: left;
+}
+.mandelbulb-caption {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: max-content;
+  max-width: 90%;
+  pointer-events: none;
+}
+.mandelbulb-caption p {
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.mandelbulb-caption span {
+  font-size: 9px;
+  color: var(--fg-muted);
+}
+.mandelbulb-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 1.7rem;
+  min-width: 0;
+  margin: 0;
+  padding: 8px 0;
+  border: 0;
+  border-top: 1px solid var(--border);
+}
+.mandelbulb-toolbar button {
+  min-height: 44px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.mandelbulb-toolbar button:hover {
+  color: var(--fg-muted);
+}
+.mandelbulb-toolbar .mandelbulb-save {
+  margin-left: auto;
+}
+.mandelbulb-timeline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 11px;
+  color: var(--fg-muted);
+}
+.mandelbulb-timeline input {
+  width: 130px;
+  height: 24px;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+.mandelbulb-timeline output {
+  width: 35px;
+  font-variant-numeric: tabular-nums;
+}
+.mandelbulb-settings {
+  border-top: 1px solid var(--border);
+}
+.mandelbulb-settings summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 50px;
+  cursor: pointer;
+  font-size: 10px;
+}
+.mandelbulb-settings summary span {
+  color: var(--fg-muted);
+}
+.mandelbulb-settings fieldset {
+  border: 0;
+  min-width: 0;
+  padding: 0 0 24px;
+  margin: 0;
+}
+.mandelbulb-presets {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.mandelbulb-presets button {
+  border: 1px solid var(--border);
+  min-height: 40px;
+  padding: 0 18px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.mandelbulb-presets button[aria-pressed='true'] {
+  color: var(--on-ink);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+.mandelbulb-presets button:hover {
+  border-color: var(--fg);
+}
+.mandelbulb-pattern-note {
+  font-size: 12px;
+  color: var(--fg-muted);
+  margin: 16px 0 24px;
+  line-height: 1.6;
+}
+.mandelbulb-sliders {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 40px;
+  padding-top: 20px;
+}
+.mandelbulb-slider {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  font-size: 12px;
+}
+.mandelbulb-slider output {
+  font-variant-numeric: tabular-nums;
+  color: var(--fg-muted);
+}
+.mandelbulb-slider input {
+  grid-column: 1 / -1;
+  width: 100%;
+  height: 24px;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+.mandelbulb-secondary {
+  margin-top: 20px;
+}
+.mandelbulb-page button:focus-visible,
+.mandelbulb-page input:focus-visible,
+.mandelbulb-page summary:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+.mandelbulb-page fieldset:disabled,
+.mandelbulb-page button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.mandelbulb-notes {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  border-top: 1px solid var(--border);
+  padding: 24px 0 12px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.mandelbulb-notes > p {
+  flex-shrink: 0;
+}
+.mandelbulb-notes span,
+.mandelbulb-notes details p {
+  color: var(--fg-muted);
+}
+.mandelbulb-notes details {
+  max-width: 38rem;
+}
+.mandelbulb-notes summary {
+  text-align: right;
+  cursor: pointer;
+  font-size: 10px;
+}
+.mandelbulb-notes details p {
+  margin-top: 16px;
+}
+.mandelbulb-message {
+  font-size: 12px;
+  min-height: 24px;
+}
+@media (max-width: 700px) {
+  .mandelbulb-page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .mandelbulb-header > span {
+    font-size: 9px;
+  }
+  .mandelbulb-intro {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .mandelbulb-intro h1 {
+    font-size: 43px;
+  }
+  .mandelbulb-intro p {
+    font-size: 12px;
+  }
+  .mandelbulb-stage {
+    min-height: 410px;
+    height: calc(100svh - 355px);
+  }
+  .mandelbulb-readout {
+    top: 20px;
+    font-size: 8px;
+  }
+  .mandelbulb-toolbar {
+    flex-wrap: wrap;
+    gap: 0 20px;
+  }
+  .mandelbulb-timeline {
+    order: 5;
+    width: 100%;
+    padding: 8px 0;
+  }
+  .mandelbulb-timeline input {
+    flex: 1;
+  }
+  .mandelbulb-toolbar button {
+    font-size: 11px;
+  }
+  .mandelbulb-caption {
+    bottom: 66px;
+  }
+  .mandelbulb-caption p {
+    font-size: 11px;
+  }
+  .mandelbulb-caption span {
+    font-size: 8px;
+  }
+  .mandelbulb-sliders {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .mandelbulb-presets {
+    gap: 6px;
+  }
+  .mandelbulb-presets button {
+    padding: 0 12px;
+    font-size: 11px;
+  }
+  .mandelbulb-notes {
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mandelbulb-notes summary {
+    text-align: left;
+  }
+}

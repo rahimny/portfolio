@@ -1,0 +1,89 @@
+.visit-stamp {
+  display: inline-flex;
+  vertical-align: middle;
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-left: 0.35rem;
+  transform: rotate(-12deg);
+  color: currentColor;
+}
+.visit-stamp svg {
+  width: 100%;
+  height: 100%;
+}
+.visit-souvenir {
+  margin-top: 2rem;
+  border-top: 1px solid var(--border-on-ink);
+  padding-top: 0.75rem;
+}
+.visit-souvenir > summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+  min-height: 44px;
+  list-style: none;
+}
+.visit-souvenir > summary::-webkit-details-marker {
+  display: none;
+}
+.visit-souvenir > summary span {
+  transition: transform 220ms ease;
+}
+.visit-souvenir[open] > summary span {
+  transform: rotate(90deg);
+}
+.visit-receipt {
+  margin-top: 1rem;
+  padding: clamp(1.25rem, 4vw, 2.5rem);
+  max-width: 30rem;
+  background: var(--paper);
+  color: var(--ink);
+  border-bottom: 5px dotted var(--ink);
+}
+.visit-receipt-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin: 1rem 0 1.5rem;
+  line-height: 1;
+}
+.visit-receipt ol {
+  list-style: none;
+  padding: 0;
+}
+.visit-receipt li a {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.85rem 0;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.visit-receipt a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+.visit-receipt a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+.visit-download {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 1rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3em;
+}
+.visit-receipt-note {
+  margin-top: 0.5rem;
+  color: var(--fg-muted);
+  font-size: 0.75rem;
+}
+@media (prefers-reduced-motion: reduce) {
+  .visit-souvenir > summary span {
+    transition: none;
+  }
+}

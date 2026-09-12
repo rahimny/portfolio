@@ -1,0 +1,288 @@
+/* ============================================================================
+   Design tokens — paper / ink / signal
+   ----------------------------------------------------------------------------
+   Three colours, one ground: white paper, black ink, and #ff3600 used as a FILL rather than as a
+   tint spread through the interface.
+
+   Naming:
+     --paper / --ink / --brand   the three anchors
+     --bg --surface --surface-2  grounds, lightest to sunken
+     --fg --fg-muted --fg-subtle text, three tiers, all ≥4.5:1 on --bg
+     --brand-ink                 the darkened orange that is safe as TEXT
+     --on-brand                  the text colour that sits ON an orange fill
+
+   The -ink split exists because #ff3600 reaches only 3.63:1 on paper — fine as
+   a fill under black type (5.78:1), not safe as body-adjacent text. Never set
+   small text in --brand; use --brand-ink.
+
+   ## One ground, no toggle
+
+   There is no `.dark` block and no theme switch. Inversion is a composition
+   device the page controls — an ink section, an orange section — not a user
+   preference.
+
+   Do NOT reference raw Tailwind palette colours (green-500, blue-400, …)
+   anywhere in src/. CI enforces this.
+   ========================================================================== */
+
+:root {
+  /* --- The three anchors ---------------------------------------------------
+     --brand is #ff3600 exactly, expressed in oklch so the tints below are
+     derived in the same space rather than eyeballed. */
+  --paper: oklch(0.972 0.003 60);
+  --ink: oklch(0.145 0.004 60);
+  --brand: oklch(0.6483 0.2392 33.01); /* #ff3600 */
+
+  /* --- Grounds -------------------------------------------------------------
+     Paper is a hair warm so the page reads as stock rather than as a screen;
+     --surface is true white, which is what gives a panel presence against it. */
+  --bg: var(--paper);
+  --surface: oklch(1 0 0);
+  --surface-2: oklch(0.945 0.004 60);
+  --surface-3: oklch(0.9 0.005 60);
+
+  /* Hairlines. --border is the 1px rule the grid is drawn with and is
+     decorative; --border-strong clears 3:1 for form controls and focus
+     (WCAG 1.4.11). */
+  --border: oklch(0.855 0.005 60);
+  --border-strong: oklch(0.6 0.008 60);
+
+  /* --- Ink tiers. All three clear 4.5:1 on --bg; --fg-subtle sets 11px mono
+     labels, which is small text and gets no large-text allowance. --- */
+  --fg: var(--ink);
+  --fg-muted: oklch(0.44 0.006 60);
+  --fg-subtle: oklch(0.53 0.006 60);
+
+  /* --- Signal orange -------------------------------------------------------
+     One colour event per viewport. --brand fills; --brand-ink writes. */
+  --brand-ink: oklch(0.535 0.196 33.01);
+  --brand-hover: oklch(0.6 0.22 33.01);
+  --brand-subtle: oklch(0.955 0.035 45);
+  --on-brand: var(--ink);
+
+  /* --- Inverted ground. Used for the ink sections, not for a theme. --- */
+  --on-ink: var(--paper);
+  --on-ink-muted: oklch(0.72 0.005 60);
+  --border-on-ink: oklch(1 0 0 / 18%);
+
+  /* Muted text on the orange plate — the --on-brand equivalent of
+     --on-ink-muted, so PlateHeader/IndexRow-style metadata has a compliant
+     quiet tier on every ground they're used on, not just paper and ink. */
+  --on-brand-muted: oklch(0.2 0.05 33.01);
+
+  /* --- Status. Live is the brand; everything else is ink. Colour stays
+     rationed — a second hue for "work in progress" buys nothing. --- */
+  --status-live: var(--brand-ink);
+  --status-live-bg: var(--brand-subtle);
+  --status-wip: var(--fg-muted);
+  --status-wip-bg: var(--surface-2);
+  --danger: oklch(0.5 0.2 27);
+  --on-danger: oklch(0.99 0.005 27);
+
+  --ring: var(--ink);
+
+  /* --- Type -------------------------------------------------------------- */
+  --font-display: 'Archivo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-text:
+    'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --measure: 68ch;
+  --measure-tight: 46ch;
+
+  /* --- Layout --------------------------------------------------------------
+     The 12-column field is the page. --gutter is the page margin, --gap the
+     column gap, and both are the only horizontal spacing decisions made.
+
+     White space here is made by LEAVING COLUMNS EMPTY, not by padding boxes.
+     The named placements in index.css (.col-lead, .col-aside, .col-inset) are
+     the whole vocabulary; a page that needs a span outside them is usually a
+     page trying to fit too much on one plate.
+
+     Widened 2026-08-29. --content-max was 110rem (1760px), which at any normal
+     screen meant the content ran the full width with a 3rem margin and the page
+     had no edge to rest against. 92rem plus a 4.5rem gutter gives a real page
+     margin at every size above a tablet. */
+  --navbar-height: 3.25rem;
+  --section-y: clamp(5rem, 12vh, 11rem);
+  --gutter: clamp(1.25rem, 4vw, 4.5rem);
+  --gap: clamp(1rem, 1.6vw, 2rem);
+  --content-max: 92rem;
+  --rule: 1px;
+
+  /* --- Radii. Zero, everywhere. Nothing on this page is soft; the corner is
+     a decision the grid already made. Kept as tokens so the shadcn primitives
+     and any `rounded-md` left in the tree resolve to square. --- */
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
+
+  /* --- Motion. One system; nothing hand-rolls a cubic-bezier. --- */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 150ms;
+  --dur-base: 300ms;
+  --dur-slow: 600ms;
+  --dur-cine: 1200ms;
+
+  /* --- Masthead size. Lives here rather than in the theme block because it is
+     the one type step that changes shape with the viewport: the name has to
+     read as a masthead — dominant, not a caption with nothing beside it — at
+     every width from a phone to a wide desktop.
+
+     One continuous curve rather than a stepped one (2026-09-04). The previous
+     version was a media-query swap at 30rem: a steep `17vw` below it and a
+     shallow `11vw` above. That is a cliff, not a scale — a viewport one pixel
+     either side of 480px got two entirely different sizes, and the shallow
+     side of it was the common case: most phones are narrower than 480px, but
+     tablets and small laptops sat just past the cliff on the formula tuned for
+     desktop, which is why the name read small everywhere below about 1400px.
+
+     `4.5rem + 7vw` is fit to land on the same 12rem ceiling the old `11vw` did
+     (both plateau around 1720px), so nothing changes on a wide desktop. Below
+     that it is strictly larger than the old curve at every width, most of all
+     on a phone. The auto-fit in `layout.ts` still shrinks the rendered scale if
+     a word does not fit the box at the size this resolves to, which is what
+     makes a single formula safe here — there is no separate overhang case to
+     solve for by hand the way the old two-piece version did. --- */
+  --hero-size: clamp(5.5rem, 4.5rem + 7vw, 12rem);
+
+  /* --- Elevation. There is none. Depth is a rule and a change of ground, not
+     a blur — a shadow under a hairline grid reads as a mistake. Kept defined
+     so `shadow-sm` in generated primitives resolves to nothing. --- */
+  --shadow-sm: none;
+  --shadow-md: none;
+  --shadow-lg: none;
+}
+
+/* ============================================================================
+   Tailwind v4 theme mapping
+   ==========================================================================*/
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-border-on-ink: var(--border-on-ink);
+
+  --color-fg: var(--fg);
+  --color-fg-muted: var(--fg-muted);
+  --color-fg-subtle: var(--fg-subtle);
+  --color-on-ink: var(--on-ink);
+  --color-on-ink-muted: var(--on-ink-muted);
+
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-subtle: var(--brand-subtle);
+  --color-on-brand: var(--on-brand);
+  --color-on-brand-muted: var(--on-brand-muted);
+
+  --color-status-live: var(--status-live);
+  --color-status-live-bg: var(--status-live-bg);
+  --color-status-wip: var(--status-wip);
+  --color-status-wip-bg: var(--status-wip-bg);
+  --color-danger: var(--danger);
+  --color-on-danger: var(--on-danger);
+  --color-ring: var(--ring);
+
+  /* --- shadcn compatibility layer -------------------------------------
+     The generated primitives in components/ui/ reference these names.
+     NOTE: shadcn's --accent means "subtle hover surface", NOT the brand
+     orange. Mapping orange here would turn every ghost-button hover orange. */
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--fg);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--fg);
+  --color-primary: var(--ink);
+  --color-primary-foreground: var(--paper);
+  --color-secondary: var(--surface-2);
+  --color-secondary-foreground: var(--fg);
+  --color-muted: var(--surface-2);
+  --color-muted-foreground: var(--fg-muted);
+  --color-accent: var(--surface-2);
+  --color-accent-foreground: var(--fg);
+  --color-destructive: var(--danger);
+  --color-input: var(--border);
+
+  /* --- Type scale. Fluid, so four breakpoint variants per heading die.
+     --text-hero sets the masthead: one or two words at viewport scale, which
+     the --text-display cap of 9rem could not reach. --- */
+  --font-display: var(--font-display);
+  --font-sans: var(--font-text);
+  --font-mono: var(--font-mono);
+
+  --text-2xs: 0.6875rem;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: clamp(1.25rem, 1.13rem + 0.5vw, 1.5rem);
+  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  --text-3xl: clamp(2rem, 1.6rem + 2vw, 3rem);
+  --text-4xl: clamp(2.5rem, 1.8rem + 3.2vw, 4.5rem);
+  --text-display: clamp(3rem, 1.2rem + 8vw, 9rem);
+  /* Sized so the longest masthead line clears the right margin instead of
+     running into it — the emptiness beside the name is doing work. At 13vw/15rem
+     it filled the measure exactly and the fold had no air anywhere. The value
+     is a reference, not a literal, so the phone override above reaches it. */
+  --text-hero: var(--hero-size);
+
+  --radius-xs: var(--radius-xs);
+  --radius-sm: var(--radius-sm);
+  --radius-md: var(--radius-md);
+  --radius-lg: var(--radius-lg);
+  --radius-xl: var(--radius-xl);
+
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+
+  --ease-out: var(--ease-out);
+  --ease-inout: var(--ease-inout);
+
+  --breakpoint-xs: 30rem;
+}
+
+/* The surveillance artwork keeps its own red field in every page state. */
+.surveillance-page {
+  --surveillance-ground: #cc141a;
+  --surveillance-text: #fff3e6;
+  --surveillance-action-ink: #8b1015;
+  --surveillance-notes-ground: #211c1a;
+}
+
+/* Filament's dark field extends behind its local inspection controls. */
+.filament-page {
+  --filament-ground: #000100;
+  --filament-text: #daddd5;
+  --filament-muted: #a4a89f;
+  --filament-rule: #383d35;
+}
+
+/* Ghost Cambridge's survey stage and its local instrument controls. */
+.ghost-page {
+  --ghost-ground: #050d10;
+  --ghost-text: #e2eeea;
+  --ghost-muted: #9eafaf;
+  --ghost-accent: #efae73;
+  --ghost-rule: #2b4247;
+}
+
+.ghost-page {
+  --ghost-building: #eee0b4;
+  --ghost-vegetation: #82baa6;
+  --ghost-river: #73c6e5;
+  --ghost-thermal-low: #422067;
+  --ghost-thermal-mid: #ef624e;
+}

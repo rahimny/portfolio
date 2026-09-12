@@ -1,0 +1,368 @@
+.pressure-page {
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: calc(var(--navbar-height) + 1.5rem) var(--gutter) 3rem;
+  color: var(--ink);
+}
+.pressure-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.3rem;
+  border-bottom: 1px solid var(--border);
+}
+.pressure-header > span {
+  white-space: nowrap;
+}
+.pressure-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 2rem;
+  padding: 1.3rem 0 1.3rem;
+}
+.pressure-intro h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  font-size: clamp(2.3rem, 4vw, 4rem);
+  line-height: 1;
+  margin-top: 0.6rem;
+}
+.pressure-intro > p {
+  font-size: clamp(1rem, 1.5vw, 1.3rem);
+  line-height: 1.5;
+}
+.pressure-intro > p span {
+  color: var(--fg-muted);
+}
+.pressure-apparatus {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 172px;
+  min-height: 420px;
+  border: 1px solid var(--border);
+}
+.pressure-stage {
+  position: relative;
+  min-width: 0;
+  height: clamp(420px, calc(100svh - 340px), 760px);
+  overflow: hidden;
+}
+.pressure-stage canvas {
+  cursor: grab;
+  touch-action: pan-y;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.pressure-stage-label,
+.pressure-stage-foot {
+  position: absolute;
+  inset: 1.1rem 1.3rem auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--fg-muted);
+  pointer-events: none;
+}
+.pressure-stage-foot {
+  inset: auto 1.3rem 1.1rem;
+}
+.pressure-instrument {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.1rem;
+  border-left: 1px solid var(--border);
+  background: var(--surface-2);
+}
+.pressure-gauge {
+  text-align: center;
+  padding-bottom: 0.7rem;
+}
+.pressure-gauge svg {
+  width: 100%;
+  max-height: 105px;
+}
+.pressure-gauge-track,
+.pressure-gauge-fill {
+  fill: none;
+  stroke: var(--border-strong);
+  stroke-width: 5;
+}
+.pressure-gauge-fill {
+  stroke: var(--ink);
+}
+.pressure-needle {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+.pressure-gauge-hub {
+  fill: var(--ink);
+}
+.pressure-gauge label {
+  display: block;
+}
+.pressure-gauge output {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  letter-spacing: -0.05em;
+}
+.pressure-gauge output small {
+  font-family: var(--font-mono);
+  font-weight: 400;
+  font-size: 0.85rem;
+  margin-left: 0.25rem;
+}
+.pressure-pump {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.75rem 1rem;
+  background: var(--brand);
+  color: var(--on-brand);
+  border: 1px solid var(--ink);
+  cursor: pointer;
+  text-align: left;
+}
+.pressure-pump svg {
+  width: 100%;
+  height: 115px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+}
+.pressure-pump-hose {
+  stroke-width: 2;
+}
+.pressure-pump-base {
+  fill: var(--brand);
+}
+.pressure-handle {
+  stroke-width: 11;
+}
+.pressure-plunger {
+  transition: transform 180ms ease-out;
+}
+.pressure-pump:active .pressure-plunger {
+  transform: translateY(28px);
+  transition-duration: 50ms;
+}
+.pressure-pump > span {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.05rem;
+  font-weight: 650;
+}
+.pressure-pump small {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.6rem;
+}
+.pressure-valve {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  border: 1px solid var(--border-strong);
+  padding: 0.7rem 0.3rem;
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.pressure-valve > span {
+  font-size: 1.3rem;
+}
+.pressure-strokes {
+  text-align: center;
+  color: var(--fg-muted);
+  margin-top: 0.8rem;
+}
+.pressure-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+}
+.pressure-controls p {
+  color: var(--fg-muted);
+}
+.pressure-controls > div {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+.pressure-controls button {
+  padding: 0.65rem 0.8rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.pressure-controls button:hover {
+  border-color: var(--border-strong);
+}
+.pressure-controls button[aria-pressed='true'],
+.pressure-valve[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+.pressure-page button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+.pressure-page button:focus-visible,
+.pressure-notes summary:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+.pressure-notes {
+  margin-top: 1.3rem;
+  max-width: 72ch;
+  font-size: 0.85rem;
+  color: var(--fg-muted);
+}
+.pressure-notes summary {
+  width: fit-content;
+  cursor: pointer;
+  color: var(--ink);
+}
+.pressure-notes p {
+  margin-top: 1rem;
+  line-height: 1.65;
+}
+@media (max-width: 700px) {
+  .pressure-header > span {
+    display: none;
+  }
+  .pressure-intro {
+    align-items: start;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1.5rem 0;
+  }
+  .pressure-intro > p br {
+    display: none;
+  }
+  .pressure-apparatus {
+    grid-template-columns: 1fr;
+  }
+  .pressure-stage {
+    height: 300px;
+  }
+  .pressure-instrument {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 0.75rem 1rem;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    padding: 1rem;
+  }
+  .pressure-gauge {
+    grid-row: span 2;
+    padding: 0;
+  }
+  .pressure-gauge svg {
+    max-height: 90px;
+  }
+  .pressure-pump {
+    padding: 0.5rem 0.75rem;
+  }
+  .pressure-pump svg {
+    height: 60px;
+  }
+  .pressure-valve {
+    margin: 0;
+    padding: 0.4rem;
+  }
+  .pressure-strokes {
+    grid-column: 1 / -1;
+    margin: 0;
+  }
+  .pressure-controls {
+    align-items: start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .pressure-controls button {
+    padding: 0.65rem;
+  }
+  .pressure-stage-label,
+  .pressure-stage-foot {
+    left: 0.8rem;
+    right: 0.8rem;
+    font-size: 0.6rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pressure-plunger {
+    transition: none;
+  }
+}
+
+.pressure-stage canvas[data-handling] {
+  cursor: grabbing;
+}
+.pressure-studio {
+  position: absolute;
+  z-index: 5;
+  top: 3rem;
+  right: 1rem;
+  width: min(290px, calc(100% - 2rem));
+  max-height: calc(100% - 4rem);
+  overflow: auto;
+  overscroll-behavior: contain;
+  background: var(--surface-2);
+  border-radius: 6px;
+  box-shadow: 0 8px 32px color-mix(in srgb, var(--ink) 20%, transparent);
+}
+.pressure-studio-close {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  background: var(--ink);
+  color: var(--on-ink);
+  text-align: right;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+.pressure-skins {
+  display: flex;
+  gap: 0.2rem;
+}
+.pressure-controls {
+  align-items: flex-start;
+}
+.pressure-controls > div {
+  justify-content: flex-end;
+}
+.pressure-controls p {
+  max-width: 25ch;
+}
+@media (max-width: 700px) {
+  .pressure-stage {
+    height: 340px;
+  }
+  .pressure-stage-foot {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .pressure-stage-foot > span:last-child {
+    align-self: flex-end;
+  }
+  .pressure-stage-foot > span:first-child {
+    max-width: none;
+    line-height: 1.4;
+  }
+  .pressure-controls > div {
+    justify-content: flex-start;
+  }
+  .pressure-controls p {
+    max-width: none;
+  }
+}

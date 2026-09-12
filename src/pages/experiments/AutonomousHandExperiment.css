@@ -1,0 +1,241 @@
+.autonomous-hand {
+  min-height: 100dvh;
+  padding: calc(var(--navbar-height) + 1.5rem) clamp(1rem, 3vw, 3rem) 3rem;
+}
+.hand-heading {
+  margin-bottom: 1rem;
+}
+.hand-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  margin: 1rem 0 0.75rem;
+}
+.hand-title h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+.hand-heading p,
+.hand-description {
+  font-size: 0.875rem;
+  line-height: 1.65;
+  max-width: 48rem;
+}
+.hand-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16rem;
+  gap: clamp(1.5rem, 3vw, 3rem);
+  align-items: start;
+}
+.hand-work {
+  min-width: 0;
+}
+.hand-stage {
+  position: relative;
+  width: 100%;
+  height: clamp(19rem, calc(100dvh - 22rem), 38rem);
+  touch-action: none;
+  overflow: hidden;
+  border: 1px solid var(--border-strong);
+}
+.hand-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.hand-caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+.hand-description {
+  margin-top: 1rem;
+}
+.hand-controls {
+  font-size: 0.8125rem;
+}
+.hand-controls fieldset {
+  min-width: 0;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+.hand-controls legend {
+  margin-bottom: 1rem;
+}
+.hand-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+.hand-controls select,
+.hand-controls input[type='number'] {
+  border: 1px solid var(--border-strong);
+  border-radius: 0;
+  padding: 0.65rem;
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 44px;
+  width: 100%;
+}
+.hand-controls button {
+  min-height: 44px;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--border-strong);
+  text-align: left;
+  width: 100%;
+}
+.hand-controls button:hover:not(:disabled) {
+  background: var(--bg-soft);
+  border-color: var(--ink);
+}
+.hand-controls button.hand-primary {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+.hand-controls button:disabled,
+.hand-controls fieldset:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.hand-controls button:focus-visible,
+.hand-controls input:focus-visible,
+.hand-controls select:focus-visible,
+.hand-controls summary:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+}
+.hand-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.hand-controls p {
+  line-height: 1.55;
+  margin: 0.7rem 0;
+}
+.hand-controls summary {
+  cursor: pointer;
+  min-height: 44px;
+  padding: 0.25rem 0 0.75rem;
+}
+.hand-controls .hand-check {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 36px;
+}
+.hand-check input {
+  width: 1rem;
+  height: 1rem;
+  accent-color: var(--ink);
+}
+.hand-controls input[type='file'] {
+  width: 100%;
+  min-height: 44px;
+  font-size: 0.75rem;
+  margin-top: 0.35rem;
+}
+.hand-events {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  line-height: 1.8;
+  overflow-wrap: anywhere;
+  max-height: 14rem;
+  overflow-y: auto;
+}
+.hand-message {
+  min-height: 1.5rem;
+}
+@media (max-width: 850px) {
+  .hand-layout {
+    grid-template-columns: 1fr;
+  }
+  .hand-controls {
+    max-width: 36rem;
+  }
+  .hand-stage {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+.hand-encounter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0 0.5rem;
+}
+.hand-opinion {
+  font-size: clamp(1rem, 1.6vw, 1.25rem);
+  letter-spacing: -0.025em;
+}
+.hand-move {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  min-height: 44px;
+  border: 1px solid var(--border-strong);
+  padding: 0.5rem 0.85rem;
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+.hand-move:hover:not(:disabled) {
+  background: var(--ink);
+  color: var(--on-ink);
+}
+.hand-move:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+}
+.hand-move:disabled {
+  opacity: 0.6;
+}
+.hand-help {
+  color: var(--fg-muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  max-width: 65ch;
+}
+.hand-memory {
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.hand-memory meter {
+  width: 100%;
+  height: 0.45rem;
+  display: block;
+  margin-top: 0.8rem;
+  border: 0;
+  background: var(--border);
+}
+.hand-memory meter::-webkit-meter-bar {
+  background: var(--border);
+  border: 0;
+  border-radius: 0;
+}
+.hand-memory meter::-webkit-meter-optimum-value {
+  background: var(--ink);
+}
+.hand-memory meter::-moz-meter-bar {
+  background: var(--ink);
+}
+.hand-memory p {
+  font-size: 0.75rem;
+}
+.hand-controls button:active:not(:disabled),
+.hand-move:active:not(:disabled) {
+  transform: translateY(1px);
+}
+.hand-controls details > button {
+  margin-bottom: 0.75rem;
+}

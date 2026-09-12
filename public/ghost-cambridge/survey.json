@@ -1,0 +1,211 @@
+{
+  "version": 2,
+  "file": "points.bin",
+  "count": 1000000,
+  "cropCount": 6561030,
+  "sourceCount": 108287863,
+  "sourceFile": "TL4055_P_12744_20230213_20230213.laz",
+  "sourceUrl": "https://environment.data.gov.uk/survey",
+  "licence": "https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/",
+  "attribution": "\u00a9 Environment Agency copyright and/or database right 2023. All rights reserved.",
+  "crs": "EPSG:27700",
+  "bounds": [543850.0, 257750.0, 545000.0, 258900.0],
+  "minimum": [543850.0, 257750.0, 0.0],
+  "origin": [544425.0, 258325.0, 0.0],
+  "scale": [0.02, 0.02, 0.01],
+  "heightRange": [0.01, 59.77],
+  "highestPoint": {
+    "position": [544165.9, 258412.08, 59.77],
+    "heightAboveGround": 50.18,
+    "classification": 1,
+    "returnKind": 1
+  },
+  "intensityPercentiles": [112.0, 2336.0],
+  "sha256": "64a1645fbb80a0cd2e0c65598206eedf9414c786f5d7d7576f175a005c0de1d9",
+  "gpsRange": [360341334.876359, 360342216.28571635],
+  "flightLines": [1711, 1811],
+  "tileSize": 230,
+  "tileColumns": 5,
+  "tiles": [
+    {
+      "id": 0,
+      "file": "detail/0.bin",
+      "count": 341721,
+      "bounds": [543850.0, 257750.0, 544080.0, 257980.0],
+      "sha256": "5b1f1f8b9189c2ba073487185253228413982357ac14cd7ef6563919721c28fd"
+    },
+    {
+      "id": 1,
+      "file": "detail/1.bin",
+      "count": 331237,
+      "bounds": [544080.0, 257750.0, 544310.0, 257980.0],
+      "sha256": "38151a62c94755d590e71e4d0555428b9f69b7cbd23a6f76d461c049e1e6a1a4"
+    },
+    {
+      "id": 2,
+      "file": "detail/2.bin",
+      "count": 366974,
+      "bounds": [544310.0, 257750.0, 544540.0, 257980.0],
+      "sha256": "8b9293f5451f367f419770c7531bebcd5c2234acc4442f3a4452add1f9e7b590"
+    },
+    {
+      "id": 3,
+      "file": "detail/3.bin",
+      "count": 264346,
+      "bounds": [544540.0, 257750.0, 544770.0, 257980.0],
+      "sha256": "2b341b64d684619a41fcf01f333cf4b8849c8c70a21475ac2cd2d56e870c8af9"
+    },
+    {
+      "id": 4,
+      "file": "detail/4.bin",
+      "count": 320038,
+      "bounds": [544770.0, 257750.0, 545000.0, 257980.0],
+      "sha256": "ff9d7192eaad7a25e94f5f859c6bed94e8c407b472b0f092434084a84c134f47"
+    },
+    {
+      "id": 5,
+      "file": "detail/5.bin",
+      "count": 317865,
+      "bounds": [543850.0, 257980.0, 544080.0, 258210.0],
+      "sha256": "78ca751e246fd41686071beaee9df5de6fe3889e56d4274767ce0a79f57c08f8"
+    },
+    {
+      "id": 6,
+      "file": "detail/6.bin",
+      "count": 314506,
+      "bounds": [544080.0, 257980.0, 544310.0, 258210.0],
+      "sha256": "14571fb577465bd4d41196c9a213dd01e591ce917f0bc27e4e9d7ad1869b50e4"
+    },
+    {
+      "id": 7,
+      "file": "detail/7.bin",
+      "count": 374287,
+      "bounds": [544310.0, 257980.0, 544540.0, 258210.0],
+      "sha256": "8cf2de03346c488020632afe9ef6af21e194ed13132dcd87b5b43084823af35a"
+    },
+    {
+      "id": 8,
+      "file": "detail/8.bin",
+      "count": 291797,
+      "bounds": [544540.0, 257980.0, 544770.0, 258210.0],
+      "sha256": "7c1f797d13966a78828c5023e19020dcdf1373e65bc37cc4b547f83d6f5fa107"
+    },
+    {
+      "id": 9,
+      "file": "detail/9.bin",
+      "count": 325338,
+      "bounds": [544770.0, 257980.0, 545000.0, 258210.0],
+      "sha256": "65154a7bc6219a491d050518124f27bbc1860f535dc4eadc6fc22957dc2e94bb"
+    },
+    {
+      "id": 10,
+      "file": "detail/10.bin",
+      "count": 318981,
+      "bounds": [543850.0, 258210.0, 544080.0, 258440.0],
+      "sha256": "2bc9f1238b2ff9c892bcd1e43659d2efdd74c4a33fffa53e9807219be72e89aa"
+    },
+    {
+      "id": 11,
+      "file": "detail/11.bin",
+      "count": 308369,
+      "bounds": [544080.0, 258210.0, 544310.0, 258440.0],
+      "sha256": "b735b88f33fb43e71a4fc0787dc77a23221db3f6a2168fe3778514c69bbfbd35"
+    },
+    {
+      "id": 12,
+      "file": "detail/12.bin",
+      "count": 384868,
+      "bounds": [544310.0, 258210.0, 544540.0, 258440.0],
+      "sha256": "e1501389841a29c68220ddd8ad83766e52cd9164caf046bd97ce8076d7793dda"
+    },
+    {
+      "id": 13,
+      "file": "detail/13.bin",
+      "count": 252235,
+      "bounds": [544540.0, 258210.0, 544770.0, 258440.0],
+      "sha256": "14f777abbfb80aaa0d2d1c7c5e0fd644759151c1b6b4643ec63dcc4c8b25450e"
+    },
+    {
+      "id": 14,
+      "file": "detail/14.bin",
+      "count": 288973,
+      "bounds": [544770.0, 258210.0, 545000.0, 258440.0],
+      "sha256": "843d0550c24c387de4b09c296db26a95bad61a5a4d84f76fb5a58c93df581a83"
+    },
+    {
+      "id": 15,
+      "file": "detail/15.bin",
+      "count": 162327,
+      "bounds": [543850.0, 258440.0, 544080.0, 258670.0],
+      "sha256": "9b91ae8fe7479c41c1a192e7dad5353003ec20f482b162988e5604b3a7034202"
+    },
+    {
+      "id": 16,
+      "file": "detail/16.bin",
+      "count": 210867,
+      "bounds": [544080.0, 258440.0, 544310.0, 258670.0],
+      "sha256": "c3fc99834312fe177331eb59cec7d071b41d00be7df57effd9cbaa0dc69106c8"
+    },
+    {
+      "id": 17,
+      "file": "detail/17.bin",
+      "count": 205715,
+      "bounds": [544310.0, 258440.0, 544540.0, 258670.0],
+      "sha256": "b4dcf2f4d215953ae8e98475c3498446836a42360d9a1ce587e425a3c9b71e8f"
+    },
+    {
+      "id": 18,
+      "file": "detail/18.bin",
+      "count": 136716,
+      "bounds": [544540.0, 258440.0, 544770.0, 258670.0],
+      "sha256": "2c424f4db4b2db3c7b3bba6bb9fa2e27a88a277db6835ab543ad84a149ae0d4b"
+    },
+    {
+      "id": 19,
+      "file": "detail/19.bin",
+      "count": 167224,
+      "bounds": [544770.0, 258440.0, 545000.0, 258670.0],
+      "sha256": "271e1556b35a5e12f6670a4d95fa9e267be4d59b41fafb94d683fad3fc11797c"
+    },
+    {
+      "id": 20,
+      "file": "detail/20.bin",
+      "count": 174524,
+      "bounds": [543850.0, 258670.0, 544080.0, 258900.0],
+      "sha256": "2ab4d91c333a59ca652da6cf08c30eaf6674d0e295a05f9eed8174b447d8e034"
+    },
+    {
+      "id": 21,
+      "file": "detail/21.bin",
+      "count": 143106,
+      "bounds": [544080.0, 258670.0, 544310.0, 258900.0],
+      "sha256": "2c2ac32d6827a3ac66002114285408a1b41285372e30bce9b9c198540b18fc05"
+    },
+    {
+      "id": 22,
+      "file": "detail/22.bin",
+      "count": 225600,
+      "bounds": [544310.0, 258670.0, 544540.0, 258900.0],
+      "sha256": "5419593ad84370b8100ae2b057252a480d969b51d726cadd142efe6d07e93f27"
+    },
+    {
+      "id": 23,
+      "file": "detail/23.bin",
+      "count": 149668,
+      "bounds": [544540.0, 258670.0, 544770.0, 258900.0],
+      "sha256": "f79c4696351a77b2783ad9275999a68832b55270ddd50f9ba85abadab25935a4"
+    },
+    {
+      "id": 24,
+      "file": "detail/24.bin",
+      "count": 183748,
+      "bounds": [544770.0, 258670.0, 545000.0, 258900.0],
+      "sha256": "3d7813f01bbd1da836d38395f62515af7dd83cf435663b0e53579893b896d534"
+    }
+  ],
+  "groundModel": "Lowest classified ground return per 5 m cell; empty cells filled from neighbours. Derived estimate, not the official EA DTM.",
+  "acquisitionSegments": [
+    [0.0, 13.288],
+    [868.52, 881.409]
+  ]
+}

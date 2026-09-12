@@ -1,0 +1,14 @@
+# Lock files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+.*.tmp.mjs
+
+# Installed agent packages and generated browser captures
+.agents/skills/
+.claude/skills/
+.playwright-mcp/
+
+# Generated artifact previews
+output/
+tmp/

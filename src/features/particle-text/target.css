@@ -1,0 +1,191 @@
+.masthead-static {
+  font-size: clamp(2.75rem, 10.9vw, 12rem);
+}
+
+.masthead-drone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: clamp(76px, 9vw, 116px);
+  height: 76px;
+  z-index: 4;
+  cursor: grab;
+  touch-action: none;
+  border: 1px solid transparent;
+  outline-offset: 5px;
+}
+.masthead-drone[hidden] {
+  display: none;
+}
+.masthead-drone:hover,
+.masthead-drone:focus-visible {
+  border-color: var(--border);
+}
+.masthead-drone[data-held='true'] {
+  cursor: grabbing;
+  border-color: var(--ink);
+}
+.masthead-drone-label {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  font: 10px var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg-subtle);
+  opacity: 0;
+}
+.masthead-drone[data-hint='true'] .masthead-drone-label {
+  opacity: 1;
+}
+.masthead-drone:hover .masthead-drone-label,
+.masthead-drone:focus-visible .masthead-drone-label {
+  opacity: 1;
+}
+.masthead-drone[data-held='true'] .masthead-drone-label {
+  opacity: 0;
+}
+.masthead-drone:is(
+    [data-mood='approaching'],
+    [data-mood='inspecting'],
+    [data-mood='leaving'],
+    [data-mood='yielding'],
+    [data-mood='visiting']
+  ):not(:hover):not(:focus-visible)
+  .masthead-drone-label {
+  opacity: 0;
+}
+@media (max-width: 360px) {
+  .masthead-drone-label {
+    left: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.masthead-play {
+  margin-top: 1.25rem;
+  color: var(--fg-subtle);
+  font-size: 0.6875rem;
+  letter-spacing: 0.025em;
+  text-transform: none;
+}
+.masthead-play-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 1.5rem;
+}
+.masthead-play-toolbar > button,
+.masthead-play summary {
+  min-height: 44px;
+  text-decoration: none;
+}
+.masthead-play-disclosure {
+  flex: 1;
+  min-width: 0;
+}
+.masthead-play summary {
+  width: fit-content;
+}
+.masthead-play summary::after {
+  content: '+';
+  margin-left: 0.75rem;
+}
+.masthead-play details[open] summary::after {
+  content: '−';
+}
+.masthead-play summary:hover,
+.masthead-play button:hover {
+  color: var(--fg);
+}
+.masthead-play-sheet {
+  max-width: 48rem;
+  padding-block: 0.5rem 0.75rem;
+  color: var(--fg);
+  line-height: 1.6;
+}
+.masthead-play-help {
+  max-width: 40rem;
+  font-family: var(--font-text);
+  font-size: 0.875rem;
+  letter-spacing: normal;
+  padding-bottom: 0.5rem;
+}
+.masthead-play-help p + p {
+  margin-top: 0.5rem;
+  color: var(--fg-muted);
+}
+.masthead-play :is(button, summary):focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 3px;
+}
+.masthead-scroll-cue {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.masthead-target {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 88px;
+  height: 88px;
+  cursor: crosshair;
+  touch-action: pan-y;
+  --puck-x: 0px;
+  --puck-y: 0px;
+  --puck-squash: 1;
+  --puck-hit: 0;
+}
+.masthead-target:disabled {
+  cursor: progress;
+}
+.masthead-puck {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+.puck-body {
+  transform-origin: 44px 43px;
+  transform: translate(var(--puck-x), var(--puck-y)) scaleY(var(--puck-squash));
+}
+.puck-shadow {
+  fill: var(--ink);
+  opacity: 0.1;
+}
+.puck-edge,
+.puck-dot {
+  fill: var(--ink);
+}
+.puck-face {
+  fill: var(--paper);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+.puck-ring {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 5;
+}
+.puck-core {
+  fill: var(--brand);
+}
+.puck-ticks {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+.puck-wave {
+  fill: none;
+  stroke: var(--brand);
+  stroke-width: 2;
+  opacity: var(--puck-hit);
+  transform-origin: 44px 43px;
+  transform: scale(calc(1.6 - var(--puck-hit) * 0.6));
+}
+.masthead-target:hover .puck-face,
+.masthead-target:focus-visible .puck-face {
+  stroke-width: 3;
+}

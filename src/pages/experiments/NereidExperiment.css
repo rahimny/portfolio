@@ -1,0 +1,671 @@
+.nereid-page {
+  padding: var(--navbar-height) 36px 0;
+  color: var(--fg);
+  background: var(--paper);
+}
+.nereid-header {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid var(--border);
+}
+.nereid-header > span {
+  font: 9px var(--font-mono);
+  letter-spacing: 0.12em;
+  color: var(--fg-muted);
+}
+.nereid-workbench {
+  position: relative;
+  height: clamp(580px, calc(100svh - 250px), 850px);
+  overflow: hidden;
+}
+.nereid-identity {
+  position: absolute;
+  top: 31px;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.nereid-identity > p {
+  font: 9px var(--font-mono);
+  letter-spacing: 0.18em;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.nereid-signal {
+  width: 7px;
+  height: 7px;
+  background: var(--brand);
+}
+.nereid-identity h1 {
+  font: 700 clamp(52px, 5.6vw, 88px) / 1 var(--font-display);
+  letter-spacing: -0.075em;
+  text-transform: uppercase;
+  margin: 15px 0 9px;
+}
+.nereid-identity h1 > span {
+  font: 300 30px var(--font-text);
+  letter-spacing: -0.08em;
+  margin-left: 19px;
+  vertical-align: 9px;
+  color: var(--fg-muted);
+}
+.nereid-model {
+  font: 11px var(--font-mono);
+  letter-spacing: 0.14em;
+}
+.nereid-model span {
+  color: var(--fg-muted);
+  font-size: 10px;
+}
+.nereid-stage {
+  position: absolute;
+  left: 210px;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+.nereid-stage canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  cursor: grab;
+}
+.nereid-stage canvas:active {
+  cursor: grabbing;
+}
+.nereid-stage canvas:focus-visible {
+  outline: 1px solid var(--fg);
+  outline-offset: -5px;
+}
+.nereid-editorial {
+  position: absolute;
+  left: 0;
+  top: 220px;
+  width: 204px;
+  pointer-events: none;
+}
+.nereid-kicker {
+  font: 8px var(--font-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+.nereid-editorial h2 {
+  font: 500 23px/1.12 var(--font-display);
+  letter-spacing: -0.045em;
+  margin: 13px 0;
+  max-width: 200px;
+}
+.nereid-editorial > p {
+  font: 11px/1.7 var(--font-text);
+  color: var(--fg-muted);
+}
+.nereid-depth {
+  border-top: 1px solid var(--border);
+  margin-top: 27px;
+  padding-top: 18px;
+}
+.nereid-depth > span {
+  font: 8px var(--font-mono);
+  letter-spacing: 0.15em;
+  color: var(--fg-muted);
+}
+.nereid-depth strong {
+  display: block;
+  font: 500 38px/1.2 var(--font-display);
+  letter-spacing: -0.055em;
+  margin: 5px 0;
+}
+.nereid-depth strong span {
+  font-size: 16px;
+  margin-left: 6px;
+}
+.nereid-depth p {
+  font: 9px var(--font-mono);
+  color: var(--fg-muted);
+}
+.nereid-drawing {
+  margin-top: 25px;
+  width: 135px;
+}
+.nereid-drawing svg {
+  width: 120px;
+  fill: none;
+  stroke: var(--fg-muted);
+  stroke-width: 0.7;
+}
+.nereid-drawing span {
+  font: 7px var(--font-mono);
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  white-space: nowrap;
+}
+.nereid-orbit-note {
+  position: absolute;
+  right: 2px;
+  top: 32px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  pointer-events: none;
+  color: var(--fg-muted);
+}
+.nereid-orbit-note span {
+  font: 8px/1.7 var(--font-mono);
+  letter-spacing: 0.14em;
+}
+.nereid-side-label {
+  position: absolute;
+  right: 0;
+  top: 44%;
+  writing-mode: vertical-rl;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  color: var(--fg-muted);
+  pointer-events: none;
+}
+.nereid-caption {
+  position: absolute;
+  left: 255px;
+  right: 5px;
+  bottom: 19px;
+  display: flex;
+  justify-content: space-between;
+  font: 8px var(--font-mono);
+  letter-spacing: 0.12em;
+  color: var(--fg-muted);
+  pointer-events: none;
+}
+.nereid-caption > span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nereid-caption i {
+  width: 5px;
+  height: 5px;
+  background: var(--fg);
+  border-radius: 50%;
+}
+.nereid-console {
+  margin: 0;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-left: 0;
+  border-right: 0;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1.05fr;
+  min-width: 0;
+}
+.nereid-views {
+  display: flex;
+}
+.nereid-views button {
+  flex: 1;
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  padding: 22px 17px;
+  text-align: left;
+  border: 0;
+  border-right: 1px solid var(--border);
+  border-top: 2px solid transparent;
+  background: transparent;
+  color: var(--fg-muted);
+  cursor: pointer;
+}
+.nereid-views button[aria-pressed='true'] {
+  color: var(--fg);
+  background: var(--surface-2);
+  border-top-color: var(--brand);
+}
+.nereid-views button span {
+  display: grid;
+  gap: 7px;
+  font: 11px var(--font-text);
+}
+.nereid-views small {
+  font: 8px var(--font-mono);
+  color: var(--fg-muted);
+}
+.nereid-separation {
+  padding: 19px 26px 12px;
+  border-right: 1px solid var(--border);
+}
+.nereid-separation label {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  font: 8px var(--font-mono);
+  letter-spacing: 0.08em;
+}
+.nereid-separation output {
+  color: var(--fg-muted);
+}
+.nereid-separation input {
+  display: block;
+  width: 100%;
+  height: 22px;
+  accent-color: var(--fg);
+  cursor: ew-resize;
+}
+.nereid-separation > div {
+  display: flex;
+  justify-content: space-between;
+  font: 7px var(--font-mono);
+  color: var(--fg-muted);
+  letter-spacing: 0.09em;
+}
+.nereid-tools {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  flex-wrap: wrap;
+}
+.nereid-tools button {
+  font: 9px var(--font-mono);
+  color: var(--fg-muted);
+  background: transparent;
+  padding: 10px 8px;
+  min-height: 36px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.nereid-tools button[aria-pressed='true'] {
+  border-color: var(--border-strong);
+  color: var(--fg);
+}
+.nereid-tools button:hover,
+.nereid-views button:hover {
+  background: var(--surface-3);
+  color: var(--fg);
+}
+.nereid-page button:focus-visible,
+.nereid-page input:focus-visible,
+.nereid-page summary:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 2px;
+}
+.nereid-page button:disabled,
+.nereid-page input:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.nereid-footer {
+  padding: 26px 0 23px;
+  display: grid;
+  grid-template-columns: 1.25fr 1fr 1fr 1fr;
+  gap: 25px;
+  border-bottom: 1px solid var(--border);
+}
+.nereid-footer > p {
+  font: 500 11px/1.6 var(--font-display);
+  letter-spacing: -0.02em;
+}
+.nereid-footer span {
+  font: 8px var(--font-mono);
+  letter-spacing: 0.06em;
+}
+.nereid-footer div p {
+  font: 10px/1.6 var(--font-text);
+  color: var(--fg-muted);
+  margin-top: 7px;
+}
+.nereid-notes {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 18px 0 28px;
+  color: var(--fg-muted);
+  font: 10px/1.8 var(--font-text);
+}
+.nereid-notes details {
+  max-width: 650px;
+}
+.nereid-notes summary {
+  cursor: pointer;
+}
+.nereid-notes p {
+  margin-top: 14px;
+}
+@media (min-width: 1700px) {
+  .nereid-page {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .nereid-editorial {
+    width: 235px;
+    top: 260px;
+  }
+  .nereid-editorial h2 {
+    font-size: 28px;
+    max-width: 235px;
+  }
+  .nereid-editorial > p {
+    font-size: 13px;
+  }
+}
+@media (max-width: 1100px) {
+  .nereid-page {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+  .nereid-header > span:nth-child(2) {
+    display: none;
+  }
+  .nereid-console {
+    grid-template-columns: 1.1fr 1fr;
+  }
+  .nereid-tools {
+    grid-column: 1 / -1;
+    padding: 4px;
+    border-top: 1px solid var(--border);
+    gap: 14px;
+  }
+  .nereid-stage {
+    left: 150px;
+  }
+  .nereid-identity h1 > span {
+    display: none;
+  }
+  .nereid-editorial {
+    width: 165px;
+  }
+  .nereid-editorial h2 {
+    font-size: 21px;
+  }
+  .nereid-caption {
+    left: 200px;
+  }
+  .nereid-footer {
+    gap: 16px;
+  }
+}
+@media (max-width: 640px) {
+  .nereid-page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .nereid-header {
+    height: 48px;
+  }
+  .nereid-header > span:last-child {
+    font-size: 8px;
+  }
+  .nereid-workbench {
+    height: 715px;
+  }
+  .nereid-identity {
+    top: 24px;
+  }
+  .nereid-identity h1 {
+    font-size: 57px;
+    margin-top: 12px;
+  }
+  .nereid-identity h1 > span {
+    display: inline;
+    font-size: 23px;
+    margin-left: 13px;
+    vertical-align: 6px;
+  }
+  .nereid-identity > p {
+    font-size: 8px;
+  }
+  .nereid-model {
+    font-size: 9px;
+  }
+  .nereid-stage {
+    left: -16px;
+    right: -16px;
+    top: 139px;
+    bottom: 114px;
+  }
+  .nereid-orbit-note {
+    top: 145px;
+    right: 0;
+  }
+  .nereid-orbit-note span {
+    font-size: 7px;
+  }
+  .nereid-side-label {
+    display: none;
+  }
+  .nereid-editorial {
+    top: auto;
+    bottom: 20px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 20px;
+  }
+  .nereid-kicker {
+    grid-column: 1 / -1;
+    font-size: 7px;
+  }
+  .nereid-editorial h2 {
+    font-size: 20px;
+    margin: 5px 0;
+  }
+  .nereid-editorial > p {
+    font-size: 10px;
+    line-height: 1.6;
+    margin-top: 5px;
+  }
+  .nereid-depth,
+  .nereid-drawing {
+    display: none;
+  }
+  .nereid-caption {
+    left: 0;
+    right: 0;
+    bottom: 129px;
+    font-size: 6px;
+    letter-spacing: 0.05em;
+  }
+  .nereid-console {
+    grid-template-columns: 1fr;
+  }
+  .nereid-views button {
+    padding: 14px 12px;
+    justify-content: center;
+  }
+  .nereid-views button:last-child {
+    border-right: 0;
+  }
+  .nereid-separation {
+    border-top: 1px solid var(--border);
+    border-right: 0;
+    padding: 17px 5px;
+  }
+  .nereid-tools {
+    gap: 4px;
+    justify-content: space-between;
+  }
+  .nereid-tools button {
+    min-height: 44px;
+    padding: 9px 6px;
+    font-size: 8px;
+  }
+  .nereid-footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .nereid-footer > p {
+    font-size: 10px;
+  }
+  .nereid-footer span {
+    font-size: 7px;
+  }
+  .nereid-footer div p {
+    font-size: 9px;
+  }
+  .nereid-notes {
+    display: block;
+  }
+}
+
+.nereid-swimming {
+  border: 0;
+  border-bottom: 1px solid var(--border);
+  padding: 25px 0 20px;
+  margin: 0;
+  min-width: 0;
+}
+.nereid-swim-heading {
+  display: grid;
+  grid-template-columns: 1fr 240px 1fr;
+  align-items: center;
+  gap: 40px;
+}
+.nereid-swim-heading h2 {
+  font: 500 22px/1.2 var(--font-display);
+  letter-spacing: -0.045em;
+  margin-top: 6px;
+}
+.nereid-swim-heading p {
+  font: 11px/1.6 var(--font-text);
+  color: var(--fg-muted);
+  margin-top: 6px;
+}
+.nereid-cycle svg {
+  display: block;
+  width: 100%;
+  height: 42px;
+  overflow: visible;
+}
+.nereid-cycle path {
+  stroke: var(--fg-muted);
+  stroke-width: 1;
+  fill: none;
+}
+.nereid-cycle line {
+  stroke: var(--brand-ink);
+  stroke-width: 1;
+}
+.nereid-cycle > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font: 8px var(--font-mono);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+  margin-top: 7px;
+}
+.nereid-swim-actions {
+  justify-self: end;
+  display: grid;
+  gap: 8px;
+}
+.nereid-swim-actions > div {
+  display: flex;
+  gap: 5px;
+  justify-content: end;
+}
+.nereid-swim-actions button {
+  min-height: 32px;
+  padding: 7px 12px;
+  border: 1px solid var(--border);
+  color: var(--fg-muted);
+  background: transparent;
+  font: 9px var(--font-mono);
+  cursor: pointer;
+}
+.nereid-swim-actions button[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--on-ink);
+  border-color: var(--ink);
+}
+.nereid-swim-actions button:hover {
+  background: var(--surface-3);
+  color: var(--fg);
+}
+.nereid-swim-parameters {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+  padding: 26px 0 12px;
+}
+.nereid-swim-parameters label > span {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font: 10px var(--font-text);
+}
+.nereid-swim-parameters output {
+  color: var(--fg-muted);
+  font: 8px var(--font-mono);
+  white-space: nowrap;
+}
+.nereid-swim-parameters input {
+  display: block;
+  width: 100%;
+  height: 24px;
+  accent-color: var(--fg);
+  margin-top: 4px;
+  cursor: ew-resize;
+}
+.nereid-swim-note {
+  font: 10px/1.7 var(--font-text);
+  color: var(--fg-muted);
+}
+.nereid-swim-note span {
+  color: var(--fg-subtle);
+}
+.nereid-notes a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+@media (max-width: 1100px) {
+  .nereid-swim-parameters {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px 24px;
+  }
+  .nereid-swim-heading {
+    grid-template-columns: 1fr 190px 1fr;
+    gap: 20px;
+  }
+}
+@media (max-width: 640px) {
+  .nereid-swim-heading {
+    grid-template-columns: 1fr 135px;
+    gap: 20px 15px;
+  }
+  .nereid-swim-heading h2 {
+    font-size: 21px;
+  }
+  .nereid-swim-heading p {
+    font-size: 9px;
+  }
+  .nereid-cycle > div {
+    display: grid;
+    font-size: 7px;
+    gap: 4px;
+  }
+  .nereid-swim-actions {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    justify-self: stretch;
+  }
+  .nereid-swim-actions button {
+    padding: 8px 9px;
+    min-height: 40px;
+    font-size: 8px;
+  }
+  .nereid-swim-parameters {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 22px;
+    padding-top: 20px;
+  }
+  .nereid-swim-note {
+    font-size: 9px;
+  }
+}

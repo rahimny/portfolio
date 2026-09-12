@@ -1,0 +1,397 @@
+.helion-page {
+  padding: calc(var(--navbar-height) + 1.25rem) var(--gutter) 1.5rem;
+}
+.helion-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+.helion-heading nav {
+  width: auto;
+}
+.helion-heading > span {
+  white-space: nowrap;
+  color: var(--fg-muted);
+}
+.helion-intro {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 1.5rem 0 0;
+}
+.helion-intro h1 {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: clamp(2.5rem, 5vw, 4.7rem);
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+.helion-intro h1 span {
+  font-family: 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+  font-size: 0.2em;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--fg-muted);
+}
+.helion-intro p {
+  font-size: 0.8rem;
+  line-height: 1.65;
+  padding-bottom: 0.2rem;
+}
+.helion-intro p span {
+  color: var(--fg-muted);
+}
+.helion-vessel {
+  background: var(--bg);
+  color: var(--fg);
+}
+.helion-stage {
+  position: relative;
+  height: clamp(450px, calc(100dvh - 320px), 1000px);
+  overflow: hidden;
+}
+.helion-stage canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  cursor: grab;
+}
+.helion-stage canvas:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: -3px;
+}
+.helion-live {
+  position: absolute;
+  right: 0;
+  top: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.55rem;
+  font-size: 0.625rem;
+  color: var(--fg-muted);
+  pointer-events: none;
+}
+.helion-live span:first-child {
+  color: var(--fg);
+}
+.helion-live .helion-mood {
+  position: relative;
+  padding-bottom: 0.55rem;
+  min-width: 5rem;
+  text-align: right;
+  color: var(--fg);
+}
+.helion-mood i {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--brand);
+  transform-origin: left;
+  transition: transform 0.15s linear;
+}
+.helion-instruction {
+  position: absolute;
+  left: 50%;
+  bottom: 1.7rem;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+  width: max-content;
+  max-width: 90%;
+}
+.helion-instruction p {
+  font-size: 0.8rem;
+  margin: 0.75rem 0 0.35rem;
+}
+.helion-instruction > span:last-child {
+  color: var(--fg-muted);
+  font-size: 0.58rem;
+  letter-spacing: 0.06em;
+}
+.helion-charge {
+  display: block;
+  width: 100px;
+  height: 2px;
+  margin: auto;
+  background: var(--border);
+}
+.helion-charge i {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--brand);
+  transform-origin: left;
+}
+.helion-coordinate {
+  position: absolute;
+  left: 0;
+  bottom: 2rem;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  color: var(--fg-muted);
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  pointer-events: none;
+}
+.helion-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  min-height: 64px;
+  border-top: 1px solid var(--border);
+}
+.helion-toolbar button {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-size: 0.72rem;
+}
+.helion-toolbar button:hover {
+  color: var(--fg-muted);
+}
+.helion-toolbar button:focus-visible,
+.helion-toolbar input:focus-visible,
+.helion-render-settings button:focus-visible,
+.helion-render-settings input:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+.helion-toolbar button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.helion-discharge {
+  padding-right: 1.75rem;
+  border-right: 1px solid var(--border);
+}
+.helion-energy {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.68rem;
+  color: var(--fg-muted);
+}
+.helion-energy input {
+  width: 100px;
+  height: 20px;
+  accent-color: var(--ink);
+  cursor: pointer;
+}
+.helion-energy span {
+  font-variant-numeric: tabular-nums;
+  width: 2rem;
+}
+.helion-tools {
+  display: flex;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+.helion-tools button {
+  width: 40px;
+}
+.helion-render-settings {
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.helion-render-settings summary {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  min-height: 48px;
+  font-size: 0.65rem;
+}
+.helion-render-settings summary span {
+  color: var(--fg-muted);
+  margin-left: auto;
+}
+.helion-render-settings[open] summary svg {
+  transform: rotate(90deg);
+}
+.helion-render-body {
+  padding: 0 0 1.5rem;
+}
+.helion-presets {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.4rem;
+}
+.helion-presets button {
+  min-height: 40px;
+  padding: 0 1.2rem;
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+.helion-presets button[aria-pressed='true'] {
+  background: var(--ink);
+  color: var(--on-ink);
+  border-color: var(--ink);
+}
+.helion-presets p {
+  font-size: 0.72rem;
+  color: var(--fg-muted);
+  margin-left: 1rem;
+}
+.helion-render-sliders {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 2rem;
+}
+.helion-render-sliders label {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  font-size: 0.72rem;
+}
+.helion-render-sliders output {
+  color: var(--fg-muted);
+  font-variant-numeric: tabular-nums;
+}
+.helion-render-sliders input {
+  grid-column: 1/-1;
+  accent-color: var(--ink);
+  width: 100%;
+  height: 24px;
+  cursor: pointer;
+}
+.helion-notes {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  padding: 1.5rem 0;
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+.helion-notes > p {
+  flex-shrink: 0;
+}
+.helion-notes > p span {
+  color: var(--fg-muted);
+}
+.helion-notes details {
+  max-width: 38rem;
+}
+.helion-notes summary {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  cursor: pointer;
+}
+.helion-notes details p {
+  margin-top: 1rem;
+  color: var(--fg-muted);
+}
+.helion-message {
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+}
+.helion-vessel:fullscreen {
+  display: flex;
+  flex-direction: column;
+  padding: 0 var(--gutter);
+}
+.helion-vessel:fullscreen .helion-stage {
+  flex: 1;
+  height: auto;
+}
+@media (max-width: 700px) {
+  .helion-heading > span {
+    font-size: 0.6rem;
+  }
+  .helion-intro {
+    align-items: flex-start;
+    gap: 1rem;
+    flex-direction: column;
+    padding-top: 1.25rem;
+  }
+  .helion-intro p {
+    font-size: 0.75rem;
+  }
+  .helion-stage {
+    height: calc(100svh - 350px);
+    min-height: 420px;
+  }
+  .helion-live {
+    font-size: 0.5rem;
+  }
+  .helion-live span:first-child {
+    max-width: 110px;
+    text-align: right;
+  }
+  .helion-coordinate {
+    display: none;
+  }
+  .helion-toolbar {
+    gap: 0.75rem;
+    padding: 0.4rem 0;
+    flex-wrap: wrap;
+  }
+  .helion-discharge {
+    padding-right: 0.75rem;
+  }
+  .helion-energy {
+    gap: 0.6rem;
+  }
+  .helion-energy input {
+    width: 64px;
+  }
+  .helion-energy span {
+    display: none;
+  }
+  .helion-tools {
+    gap: 0;
+  }
+  .helion-tools button {
+    width: 34px;
+  }
+  .helion-presets {
+    flex-wrap: wrap;
+  }
+  .helion-presets p {
+    width: 100%;
+    margin: 0.5rem 0 0;
+    line-height: 1.6;
+  }
+  .helion-render-sliders {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.5rem;
+  }
+  .helion-notes {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .helion-notes summary {
+    justify-content: flex-start;
+  }
+}
+@media (max-width: 440px) {
+  .helion-energy {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
+    padding: 0.25rem 0;
+  }
+  .helion-energy input {
+    width: 75%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .helion-mood i {
+    transition: none;
+  }
+}

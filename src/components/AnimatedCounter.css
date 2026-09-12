@@ -1,0 +1,41 @@
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate-border {
+  to {
+    --angle: 360deg;
+  }
+}
+
+/**
+ * A rotating hairline, not a rainbow.
+ *
+ * Was a six-stop red-to-violet conic gradient under three stacked glows.
+ * The palette has one accent now, so the sweep is a single arc of it running
+ * round an otherwise hairline ring, and the glows are gone — nothing on this
+ * site is lit from behind.
+ */
+.animated-border {
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  transition: transform var(--dur-fast) var(--ease-out);
+  background: conic-gradient(
+    from var(--angle),
+    var(--border) 0deg,
+    var(--border) 250deg,
+    var(--brand) 320deg,
+    var(--border) 360deg
+  );
+  animation: rotate-border 3s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-border {
+    animation: none;
+    background: var(--border);
+  }
+}
